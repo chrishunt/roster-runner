@@ -46,6 +46,9 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mocha (0.9.11)
+      rake
+    nifty-generators (0.4.4)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -86,6 +89,8 @@ DEPENDENCIES
   haml
   hirb
   jquery-rails
+  mocha
+  nifty-generators
   rails (= 3.0.3)
   sqlite3-ruby
   thin

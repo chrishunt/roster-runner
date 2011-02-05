@@ -1,0 +1,15 @@
+- title "Team"
+
+%p
+  %strong Name:
+  = @team.name
+%p
+  %strong Roster:
+  = @team.roster
+
+%p
+  = link_to "Edit", edit_team_path(@team)
+  |
+  = link_to "Destroy", @team, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", teams_path

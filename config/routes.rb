@@ -1,4 +1,6 @@
 CodeReplacements::Application.routes.draw do
+  resources :teams
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -12,8 +14,7 @@ CodeReplacements::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :teams
-
+  
   # Sample resource route with options:
   #   resources :products do
   #     member do
@@ -49,8 +50,7 @@ CodeReplacements::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "generators#index"
-
+  root :to => "teams#index"
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

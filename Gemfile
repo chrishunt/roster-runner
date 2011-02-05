@@ -15,6 +15,10 @@ group :console do
   gem 'hirb'
 end
 
+group :development do
+  gem 'nifty-generators'
+end
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
@@ -37,3 +41,4 @@ end
 # group :development, :test do
 #   gem 'webrat'
 # end
+gem "mocha", :group => :test
