@@ -1,0 +1,6 @@
+%h1= "Code Replacements"
+.grid_12
+  = form_for @team do |f|
+    = f.label "Team name"
+    = f.text_field :name
+    = f.submit
