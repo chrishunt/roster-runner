@@ -2,8 +2,9 @@
 %html
   %head
     %title= "Code Replacements"
-    = stylesheet_link_tag :all
+    = stylesheet_link_tag 'reset','960','text','application'
     = javascript_include_tag :defaults
     = csrf_meta_tag
   %body
-    = yield
+    .container_12
+      = yield
