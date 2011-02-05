@@ -3,10 +3,11 @@
 %table
   %tr
     %th Name
-    %th Roster
+    %th Code
   - for team in @teams
     %tr
       %td= team.name
+      %td= link_to 'download', code_path(team)
       %td= link_to 'Show', team
       %td= link_to 'Edit', edit_team_path(team)
       %td= link_to 'Destroy', team, :confirm => 'Are you sure?', :method => :delete

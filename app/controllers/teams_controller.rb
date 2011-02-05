@@ -41,4 +41,17 @@ class TeamsController < ApplicationController
     flash[:notice] = "Successfully destroyed team."
     redirect_to teams_url
   end
+
+  def code
+    @team = Team.find params[:id]
+    if !@team.nil?
+      prefix = params[:prefix]
+      if prefix.nil? || prefix == ""
+        prefix = @team.prefix
+      end
+      response.headers['Content-Type'] = 'text/plain'
+      response.headers['Content-Disposition'] = "attachment; filename=#{@team.filename}"
+      render :text => @team.code(prefix)
+    end
+  end
 end

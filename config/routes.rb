@@ -1,6 +1,7 @@
 CodeReplacements::Application.routes.draw do
-  resources :players
+  match 'teams/:id/code' => 'teams#code', :as => :code
 
+  resources :players
   resources :teams
 
   # The priority is based upon order of creation:

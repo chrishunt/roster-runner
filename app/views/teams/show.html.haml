@@ -5,6 +5,7 @@
   = @team.name
 %p
   %strong Roster:
+  %br
   - @team.players.each do |p|
     = p.name
     %br
