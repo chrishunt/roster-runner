@@ -9,12 +9,11 @@
     %th Team
   - for player in @players
     %tr
-      %td= player.number
+      %td= link_to player.number, player
       %td= player.first_name
       %td= player.last_name
       %td= player.position
-      %td= player.team.name
-      %td= link_to 'Show', player
+      %td= link_to player.team.name, player.team
       %td= link_to 'Edit', edit_player_path(player)
       %td= link_to 'Destroy', player, :confirm => 'Are you sure?', :method => :delete
 

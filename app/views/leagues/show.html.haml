@@ -1,8 +1,13 @@
-- title "League"
+- title @league.name
 
 %p
   %strong Name:
   = @league.name
+%p
+  %strong Teams:
+  - @league.teams.each do |team|
+    %br
+    = link_to team.name, team
 
 %p
   = link_to "Edit", edit_league_path(@league)

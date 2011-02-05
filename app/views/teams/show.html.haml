@@ -7,7 +7,7 @@
   %strong Roster:
   %br
   - @team.players.each do |p|
-    = p.name
+    = link_to p.name, p
     %br
 
 %p

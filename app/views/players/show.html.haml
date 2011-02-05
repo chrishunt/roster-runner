@@ -1,4 +1,4 @@
-- title "Player"
+- title @player.name
 
 %p
   %strong First Name:
@@ -14,7 +14,7 @@
   = @player.position
 %p
   %strong Team:
-  = @player.team.name
+  = link_to @player.team.name, @player.team
 
 %p
   = link_to "Edit", edit_player_path(@player)
