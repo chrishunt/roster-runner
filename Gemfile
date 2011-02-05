@@ -8,6 +8,7 @@ gem 'rails', '3.0.3'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'haml'
 gem 'thin'
+gem 'jquery-rails'
 
 group :console do
   gem 'wirble'
