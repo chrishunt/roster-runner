@@ -1,9 +1,12 @@
 CSV_DIR = "csv"
 
 # Create leagues
-league = League.new
-league.name = "MLS"
-league.save
+Dir.foreach("#{CSV_DIR}") do |file|
+  next if file == "." || file == ".."
+  league = League.new
+  league.name = file
+  league.save
+end
 
 # Load teams for each league from csv
 League.all.each do |league|
