@@ -10,6 +10,7 @@ gem 'haml'
 gem 'thin'
 gem 'jquery-rails'
 gem 'csv-mapper'
+gem 'scrapi'
 
 group :console do
   gem 'wirble'

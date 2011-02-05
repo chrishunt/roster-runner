@@ -1,5 +1,5 @@
 class Scraper < ActiveRecord::Base
-  def self.hello
-    "hello"
+  def self.mls
+    "hello there"
   end
 end

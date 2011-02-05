@@ -1,10 +1,11 @@
 CodeReplacements::Application.routes.draw do
-  resources :leagues
 
   match 'teams/:id/code' => 'teams#code', :as => :code
+  match 'scrapers/mls' => 'scrapers#mls', :as => :mls_scraper
 
   resources :players
   resources :teams
+  resources :leagues
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
