@@ -1,7 +1,8 @@
 class Team < ActiveRecord::Base
   attr_accessible :name
-  validates_presence_of :name
+  validates_presence_of :name, :league
   has_many :players
+  belongs_to :league
 
   def filename
     split = name.split

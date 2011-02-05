@@ -1,4 +1,6 @@
 CodeReplacements::Application.routes.draw do
+  resources :leagues
+
   match 'teams/:id/code' => 'teams#code', :as => :code
 
   resources :players

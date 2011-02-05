@@ -1,0 +1,12 @@
+- title "League"
+
+%p
+  %strong Name:
+  = @league.name
+
+%p
+  = link_to "Edit", edit_league_path(@league)
+  |
+  = link_to "Destroy", @league, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", leagues_path
