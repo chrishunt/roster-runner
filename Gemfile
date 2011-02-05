@@ -9,6 +9,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'haml'
 gem 'thin'
 gem 'jquery-rails'
+gem 'csv-mapper'
 
 group :console do
   gem 'wirble'

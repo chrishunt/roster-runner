@@ -1,11 +1,13 @@
-- title "Team"
+- title @team.name
 
 %p
   %strong Name:
   = @team.name
 %p
   %strong Roster:
-  = @team.roster
+  - @team.players.each do |p|
+    = p.name
+    %br
 
 %p
   = link_to "Edit", edit_team_path(@team)
