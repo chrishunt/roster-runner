@@ -6,9 +6,9 @@ class Team < ActiveRecord::Base
 
   def filename
     split = name.split
-    file = split[0].downcase
+    file = "#{league.name.downcase}_#{split[0].downcase}"
     split[1..(split.size)].each do |s|
-      file << "_" << s.downcase
+      file << "_#{s.downcase}"
     end
     file << ".txt"
   end
