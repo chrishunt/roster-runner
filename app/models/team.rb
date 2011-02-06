@@ -1,6 +1,6 @@
 class Team < ActiveRecord::Base
   attr_accessible :name
-  validates_presence_of :name, :league
+  validates_presence_of :name, :league, :uri
   has_many :players
   belongs_to :league
 
@@ -39,4 +39,81 @@ class Team < ActiveRecord::Base
     end
     ret
   end
+
+  def scrape
+    # Delete all players on this team
+    players.destroy_all 
+    if league.name.upcase == "MLS"
+      scrape_mls
+    elsif league.name.upcase == "NFL"
+      scrape_nfl
+    end
+  end
+
+  def scrape_mls
+    scraper = Scraper.define do
+      process "#mpl-team-name", :name => :text
+      array :players
+      process ".mpl-tbody-row", :players => Scraper.define {
+        process ".mpl-number", :number => :text
+        process ".mpl-position", :position => :text
+        process ".mpl-player.active>a", :name => :text
+        result :number, :position, :name
+      }
+      result :name, :players
+    end
+    results = scraper.scrape(URI.parse(uri))
+    results.players.each do |p|
+      next if p[:number].nil? || p[:name].nil? || p[:position].nil?
+      player = Player.new
+      player.team_id = id
+      player.number = p[:number]
+      player.position = p[:position]
+      player.first_name = p[:name].split[0]
+      player.last_name = p[:name].split[1..(p[:name].size)].join(" ")
+      player.save
+    end
+  end
+
+  def scrape_nfl
+    scraper = Scraper.define do
+      array :players_even
+      process ".loop-even", :players_even => Scraper.define {
+        process ".col-jersey", :number => :text
+        process ".player-card-tooltip>span", :name => :text
+        process ".col-position", :position => :text
+        result :number, :name, :position
+      }
+      array :players_odd
+      process ".loop-odd", :players_odd => Scraper.define {
+        process ".col-jersey", :number => :text
+        process ".player-card-tooltip>span", :name => :text
+        process ".col-position", :position => :text
+        result :number, :name, :position
+      }
+      result :players_even, :players_odd
+    end
+    results = scraper.scrape(URI.parse(uri))
+    results.players_even.each do |p|
+      next if p[:number].nil? || p[:name].nil? || p[:position].nil?
+      player = Player.new
+      player.team_id = id
+      player.number = p[:number]
+      player.position = p[:position]
+      player.last_name = p[:name].split(',')[0].strip
+      player.first_name = p[:name].split(',')[1].strip
+      player.save
+    end
+    results.players_odd.each do |p|
+      next if p[:number].nil? || p[:name].nil? || p[:position].nil?
+      player = Player.new
+      player.team_id = id
+      player.number = p[:number]
+      player.position = p[:position]
+      player.last_name = p[:name].split(',')[0].strip
+      player.first_name = p[:name].split(',')[1].strip
+      player.save
+    end
+  end
 end
+
