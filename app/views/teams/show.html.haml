@@ -1,15 +1,18 @@
 - title @team.name
 
 %p
-  %strong Name:
-  = @team.name
-%p
-  %strong Roster:
-  %br
-  - @team.players.each do |p|
-    = link_to p.name, p
-    %br
-
+  %table
+    %tr
+      %th Number
+      %th First name
+      %th Last name
+      %th Position
+    - @team.players.each do |player|
+      %tr
+        %td= link_to player.number, player
+        %td= player.first_name
+        %td= player.last_name
+        %td= player.position
 %p
   = link_to "Edit", edit_team_path(@team)
   |

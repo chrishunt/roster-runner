@@ -1,5 +1,5 @@
 body {
-  background-color: #4b7399;
+  background-color: #272727;
   font-family: Verdana, Helvetica, Arial;
   font-size: 14px; }
 
@@ -59,3 +59,18 @@ a {
     margin: 8px 10px; }
   .error_messages ul {
     margin: 0; }
+
+table {
+  background-color: #e8edff;
+  border-collapse: collapse; }
+  table a {
+    color: #4b7399;
+    text-decoration: none; }
+  table tr:hover {
+    background-color: #d0dafd; }
+  table tr th, table tr td {
+    padding: 15px 20px; }
+  table tr th {
+    text-align: left;
+    background-color: #b9c9fe;
+    border-bottom: 1px solid black; }
