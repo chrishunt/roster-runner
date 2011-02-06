@@ -1,7 +1,5 @@
 CodeReplacements::Application.routes.draw do
-
   match 'teams/:id/code' => 'teams#code', :as => :code
-  match 'scrapers/mls' => 'scrapers#mls', :as => :mls_scraper
 
   resources :players
   resources :teams
