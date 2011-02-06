@@ -1,7 +1,7 @@
 class Team < ActiveRecord::Base
   attr_accessible :name
   validates_presence_of :name, :league, :uri
-  has_many :players
+  has_many :players, :order => "number"
   belongs_to :league
 
   def filename
@@ -19,26 +19,94 @@ class Team < ActiveRecord::Base
 
   def code(prefix = prefix)
     ret = ""
-    players.each do |p|
-      # sea1 doug funny
-      ret << "#{prefix}#{p.number}" << "\t" << "#{p.name}" << "\n"
-      # sea1p wr doug funny
-      ret << "#{prefix}#{p.number}p" << "\t" << "#{p.position} #{p.name}" << "\n"
-      # sea1tp seattle seahawks wr doug funny
-      ret << "#{prefix}#{p.number}tp" << "\t" << "#{p.team.name} #{p.position} #{p.name}" << "\n"
-      # sea1tpn seattle seahawks wr doug funny (2)
-      ret << "#{prefix}#{p.number}tpn" << "\t" << "#{p.team.name} #{p.position} #{p.name} (#{p.number})" << "\n"
-      # sea1n doug funny (2)
-      ret << "#{prefix}#{p.number}n" << "\t" << "#{p.name} (#{p.number})" << "\n"
-      # sea1tn seattle seahawks doug funny (2)
-      ret << "#{prefix}#{p.number}tn" << "\t" << "#{p.team.name} #{p.name} (#{p.number})" << "\n"
-      # sea1pn wr doug funny (2)
-      ret << "#{prefix}#{p.number}pn" << "\t" << "#{p.position} #{p.name} (#{p.number})" << "\n"
-      # sea1s [funny, doug], 
-      ret << "#{prefix}#{p.number}s" << "\t" << "[#{p.last_name},#{p.first_name}]," << "\n"
+    i = 0
+    while(i < players.size)
+      group = []
+      group << players[i]
+      # gather all the players the same number
+      while ((i+1 < players.size) && (players[i+1].number == players[i].number))
+        i = i+1
+        group << players[i]
+      end
+      i = i + 1
+
+      # save prefix
+      number = group[0].number
+      sea1 = "#{prefix}#{number}" << "\t"
+      sea1p = "#{prefix}#{number}p" << "\t"
+      sea1tp = "#{prefix}#{number}tp" << "\t"
+      sea1tpn = "#{prefix}#{number}tpn" << "\t"
+      sea1n = "#{prefix}#{number}n" << "\t" 
+      sea1tn = "#{prefix}#{number}tn" << "\t"
+      sea1pn = "#{prefix}#{number}pn" << "\t"
+      sea1s = "#{prefix}#{number}s" << "\t"
+
+      if group.size == 1
+        # save expansion for single player
+        p = group[0] 
+        sea1 << "#{p.name}" 
+        sea1p << "#{p.position} #{p.name}"
+        sea1tp << "#{p.team.name} #{p.position} #{p.name}"
+        sea1tpn << "#{p.team.name} #{p.position} #{p.name} (#{p.number})"
+        sea1n << "#{p.name} (#{p.number})"
+        sea1tn << "#{p.team.name} #{p.name} (#{p.number})"
+        sea1pn << "#{p.position} #{p.name} (#{p.number})"
+        sea1s << "[#{p.last_name},#{p.first_name}],"
+      else
+        group.each do |p|
+          # save expansion for multiple players
+          sea1 << "# #{p.name} #" 
+          sea1p << "# #{p.position} #{p.name} #"
+          sea1tp << "# #{p.team.name} #{p.position} #{p.name} #"
+          sea1tpn << "# #{p.team.name} #{p.position} #{p.name} (#{p.number}) #"
+          sea1n << "# #{p.name} (#{p.number}) #"
+          sea1tn << "# #{p.team.name} #{p.name} (#{p.number}) #"
+          sea1pn << "# #{p.position} #{p.name} (#{p.number}) #"
+          sea1s << "# [#{p.last_name},#{p.first_name}], #"
+        end
+      end
+
+      # add new line at end of expansion
+      sea1 << "\n"
+      sea1p << "\n"
+      sea1tp << "\n"
+      sea1tpn << "\n"
+      sea1n << "\n"
+      sea1tn << "\n"
+      sea1pn << "\n"
+      sea1s << "\n"
+
+      # update return string
+      ret << sea1 << sea1p 
+      ret << sea1tp << sea1tpn 
+      ret << sea1n << sea1tn
+      ret << sea1pn << sea1s
     end
     ret
   end
+
+  #def code(prefix = prefix)
+  #  ret = ""
+  #  players.each do |p|
+  #    # sea1 doug funny
+  #    ret << "#{prefix}#{p.number}" << "\t" << "#{p.name}" << "\n"
+  #    # sea1p wr doug funny
+  #    ret << "#{prefix}#{p.number}p" << "\t" << "#{p.position} #{p.name}" << "\n"
+  #    # sea1tp seattle seahawks wr doug funny
+  #    ret << "#{prefix}#{p.number}tp" << "\t" << "#{p.team.name} #{p.position} #{p.name}" << "\n"
+  #    # sea1tpn seattle seahawks wr doug funny (2)
+  #    ret << "#{prefix}#{p.number}tpn" << "\t" << "#{p.team.name} #{p.position} #{p.name} (#{p.number})" << "\n"
+  #    # sea1n doug funny (2)
+  #    ret << "#{prefix}#{p.number}n" << "\t" << "#{p.name} (#{p.number})" << "\n"
+  #    # sea1tn seattle seahawks doug funny (2)
+  #    ret << "#{prefix}#{p.number}tn" << "\t" << "#{p.team.name} #{p.name} (#{p.number})" << "\n"
+  #    # sea1pn wr doug funny (2)
+  #    ret << "#{prefix}#{p.number}pn" << "\t" << "#{p.position} #{p.name} (#{p.number})" << "\n"
+  #    # sea1s [funny, doug], 
+  #    ret << "#{prefix}#{p.number}s" << "\t" << "[#{p.last_name},#{p.first_name}]," << "\n"
+  #  end
+  #  ret
+  #end
 
   def scrape
     # Delete all players on this team
