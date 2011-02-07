@@ -1,38 +1,29 @@
 require 'scrapi'
 
 scraper = Scraper.define do
-  array :players_even
-  process ".loop-even", :players_even => Scraper.define {
-    process ".col-jersey", :number => :text
-    process ".player-card-tooltip>span", :name => :text
-    process ".col-position", :position => :text
-    result :number, :name, :position
-  }
   array :players_odd
-  process ".loop-odd", :players_odd => Scraper.define {
-    process ".col-jersey", :number => :text
-    process ".player-card-tooltip>span", :name => :text
-    process ".col-position", :position => :text
-    result :number, :name, :position
+  process ".oddrow", :players_odd => Scraper.define {
+    array :rows
+    process "td", :rows => :text
+    result :rows
   }
-  result :players_even, :players_odd
+  array :players_even
+  process ".evenrow", :players_even => Scraper.define {
+    array :rows
+    process "td", :rows => :text
+    result :rows
+  }
+  result :players_odd, :players_even
 end
 
-uri = URI.parse("http://www.packers.com/team/players.html")
+uri = URI.parse("http://espn.go.com/nfl/team/roster/_/name/wsh/washington-redskins")
 
 results = scraper.scrape(uri)
-
-puts "********** EVEN COUNT: #{results.players_even.size} **********"
-results.players_even.each do |player|
-  next if player[:number].nil? || player[:name].nil? || player[:position].nil?
-  puts "Number: #{player[:number]}"
-  puts "Name: #{player[:name]}"
-  puts "Position: #{player[:position]}"
-end
-puts "********** ODD COUNT: #{results.players_odd.size} **********"
-results.players_odd.each do |player|
-  next if player[:number].nil? || player[:name].nil? || player[:position].nil?
-  puts "Number: #{player[:number]}"
-  puts "Name: #{player[:name]}"
-  puts "Position: #{player[:position]}"
+players = results.players_even << results.players_odd
+players.each do |player|
+  puts "Number: #{player[0]}"
+  name = player[1].split 
+  puts "First Name: #{name[0]}"
+  puts "Last Name: #{name[1..(name.size-1)].join(" ")}"
+  puts "Position: #{player[2]}"
 end

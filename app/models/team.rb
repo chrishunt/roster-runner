@@ -145,42 +145,40 @@ class Team < ActiveRecord::Base
 
   def scrape_nfl
     scraper = Scraper.define do
-      array :players_even
-      process ".loop-even", :players_even => Scraper.define {
-        process ".col-jersey", :number => :text
-        process ".player-card-tooltip>span", :name => :text
-        process ".col-position", :position => :text
-        result :number, :name, :position
-      }
       array :players_odd
-      process ".loop-odd", :players_odd => Scraper.define {
-        process ".col-jersey", :number => :text
-        process ".player-card-tooltip>span", :name => :text
-        process ".col-position", :position => :text
-        result :number, :name, :position
+      process ".oddrow", :players_odd => Scraper.define {
+        array :rows
+        process "td", :rows => :text
+        result :rows
       }
-      result :players_even, :players_odd
+      array :players_even
+      process ".evenrow", :players_even => Scraper.define {
+        array :rows
+        process "td", :rows => :text
+        result :rows
+      }
+      result :players_odd, :players_even
     end
     results = scraper.scrape(URI.parse(uri))
     results.players_even.each do |p|
-      next if p[:number].nil? || p[:name].nil? || p[:position].nil?
+      next if p[0].nil? || p[1].nil? || p[2].nil?
       player = Player.new
       player.team_id = id
-      player.number = p[:number]
-      player.position = p[:position]
-      player.last_name = p[:name].split(',')[0].strip
-      player.first_name = p[:name].split(',')[1].strip
-      player.save
+      player.number = p[0]
+      full_name = p[1].split 
+      player.first_name = full_name[0]
+      player.last_name = full_name[1..(full_name.size-1)].join(" ")
+      player.position = p[2]
     end
     results.players_odd.each do |p|
-      next if p[:number].nil? || p[:name].nil? || p[:position].nil?
+      next if p[0].nil? || p[1].nil? || p[2].nil?
       player = Player.new
       player.team_id = id
-      player.number = p[:number]
-      player.position = p[:position]
-      player.last_name = p[:name].split(',')[0].strip
-      player.first_name = p[:name].split(',')[1].strip
-      player.save
+      player.number = p[0]
+      full_name = p[1].split 
+      player.first_name = full_name[0]
+      player.last_name = full_name[1..(full_name.size-1)].join(" ")
+      player.position = p[2]
     end
   end
 end
