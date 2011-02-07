@@ -14,7 +14,7 @@ class Team < ActiveRecord::Base
   end
 
   def prefix
-    name.split[0][0..2].strip.downcase
+    name.first.downcase
   end
 
   def code(prefix = prefix)

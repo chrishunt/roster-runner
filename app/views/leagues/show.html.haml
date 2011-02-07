@@ -1,4 +1,5 @@
 - title @league.name
+%h1= @league.name
 
 %table
   %tr
@@ -11,4 +12,24 @@
       %td= link_to team.league.short_name, team.league
       %td= link_to team.name, team
       %td= link_to team.players.size, team
-      %td= link_to 'Download', code_path(team)
+      %td
+        = link_to 'T', 
+          code_path(:id => team, :form => :ty), 
+          :id => "code_link_#{team.id}_#{team.prefix}_ty",
+          :class => "code_link",
+          :title => "Download Photo Mechanic Code Replacements"
+        = link_to 'E', 
+          code_path(:id => team, :form => :te), 
+          :id => "code_link_#{team.id}_#{team.prefix}_te",
+          :class => "code_link",
+          :title => "Download Text Expander Snippets"
+        = link_to 'A', 
+          code_path(:id => team, :form => :ah), 
+          :id => "code_link_#{team.id}_#{team.prefix}_ah",
+          :class => "code_link",
+          :title => "Download Photo Mechanic Code Replacements"
+        = link_to 'M', 
+          code_path(:id => team, :form => :pm), 
+          :id => "code_link_#{team.id}_#{team.prefix}_pm",
+          :class => "code_link",
+          :title => "Download Photo Mechanic Code Replacements"
