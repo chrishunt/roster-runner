@@ -9,13 +9,7 @@
       %th Position
     - @team.players.each do |player|
       %tr
-        %td= link_to player.number, player
+        %td= player.number
         %td= player.first_name
         %td= player.last_name
         %td= player.position
-%p
-  = link_to "Edit", edit_team_path(@team)
-  |
-  = link_to "Destroy", @team, :confirm => 'Are you sure?', :method => :delete
-  |
-  = link_to "View All", teams_path

@@ -1,6 +1,11 @@
+* {
+  padding: 0;
+  margin: 0; }
+
 body {
-  background-color: #272727;
+  background-color: #fdfdfd;
   font-family: Verdana, Helvetica, Arial;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
   font-size: 14px; }
 
 a {
@@ -13,12 +18,61 @@ a {
   height: 0;
   overflow: hidden; }
 
+h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #363636; }
+
+#header {
+  background-color: #ffe1cc;
+  color: #58585a;
+  padding: 20px;
+  text-align: center;
+  font-size: 110%; }
+  #header div {
+    display: inline;
+    text-transform: uppercase; }
+    #header div a, #header div .selected {
+      color: #58585a;
+      text-decoration: none;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      padding: 3px 20px; }
+  #header .selected a {
+    color: white;
+    background-color: #e16003; }
+
+#footer_container {
+  font-size: 110%;
+  text-transform: uppercase;
+  height: 60px; }
+
+#footer {
+  display: none;
+  bottom: 0px;
+  z-index: 1001;
+  position: fixed;
+  width: 100%;
+  padding: 20px 0;
+  margin: 0;
+  text-align: center;
+  color: white;
+  background-color: #231f20; }
+  #footer .left {
+    float: left;
+    padding-left: 20px; }
+  #footer .right {
+    float: right;
+    padding-right: 20px; }
+
 #container {
+  text-align: center;
+  color: #58585a;
   width: 75%;
   margin: 0 auto;
-  background: white;
+  background-color: #fdfdfd;
   padding: 20px 40px;
-  border: solid 1px black;
   margin-top: 20px; }
 
 #flash_notice,
@@ -61,16 +115,25 @@ a {
     margin: 0; }
 
 table {
-  background-color: #e8edff;
-  border-collapse: collapse; }
+  margin-left: auto;
+  margin-right: auto;
+  color: #58585a;
+  background-color: #fdfdfd;
+  border-collapse: collapse;
+  border: 10px solid #ffe1cc; }
   table a {
-    color: #4b7399;
+    color: #58585a;
     text-decoration: none; }
+    table a:hover {
+      color: #363636; }
   table tr:hover {
-    background-color: #d0dafd; }
+    color: #363636;
+    background-color: #ffe1cc; }
+    table tr:hover a {
+      color: #363636; }
   table tr th, table tr td {
     padding: 15px 20px; }
   table tr th {
-    text-align: left;
-    background-color: #b9c9fe;
-    border-bottom: 1px solid black; }
+    text-transform: uppercase;
+    color: white;
+    background-color: #e16003; }

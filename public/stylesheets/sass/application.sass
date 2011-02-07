@@ -1,19 +1,31 @@
 $black: #000000
 $white: #ffffff
 
+$orange: #e16003
+$light_orange: #ffe1cc
+$canvas: #fdfdfd
+
+$darker_grey: #231f20
+$dark_grey: #363636
+$grey: #58585a
+$light_grey: #afafb2
+
+$dark_blue: #4b7399
 $blue: #b9c9fe
 $light_blue: #d0dafd
 $lighter_blue: #e8edff
-$dark_blue: #4b7399
 
-$dark_grey: #272727
+$primary_color: $canvas
 
-$primary_color: $dark_grey
+*
+  padding: 0
+  margin: 0
 
 body
   background-color: $primary_color
   font:
     family: Verdana, Helvetica, Arial
+    family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif
     size: 14px
 
 a
@@ -26,12 +38,62 @@ a
   height: 0
   overflow: hidden
 
+h1
+  margin-bottom: 20px
+  text-align: center
+  color: $dark_grey
+
+#header
+  background-color: $light_orange
+  color: $grey
+  padding: 20px
+  text-align: center
+  font-size: 110%
+  div
+    display: inline
+    text-transform: uppercase
+    a, .selected
+      color: $grey
+      text-decoration: none
+      -moz-border-radius: 5px
+      -webkit-border-radius: 5px
+      border-radius: 5px
+      padding: 3px 20px
+  .selected
+    a
+      color: $white
+      background-color: $orange
+
+#footer_container
+  font-size: 110%
+  text-transform: uppercase
+  height: 60px
+
+#footer
+  display: none
+  bottom: 0px
+  z-index: 1001
+  position: fixed
+  width: 100%
+  padding: 20px 0
+  margin: 0
+  text-align: center
+  color: $white
+  background-color: $darker_grey
+  .left
+    float: left
+    padding-left: 20px
+  .right
+    float: right
+    padding-right: 20px
+
 #container
+  text-align: center
+  color: $grey
   width: 75%
   margin: 0 auto
-  background: white
+  background-color: $canvas
   padding: 20px 40px
-  border: solid 1px black
   margin-top: 20px
 
 #flash_notice,
@@ -76,19 +138,27 @@ a
     margin: 0
 
 table
-  background-color: $lighter_blue
+  margin-left: auto
+  margin-right: auto
+  color: $grey
+  background-color: $canvas
   border-collapse: collapse
-  
+  border: 10px solid $light_orange
   a
-    color: $dark_blue
+    color: $grey
     text-decoration: none
+    &:hover
+      color: $dark_grey
   tr
     &:hover
-      background-color: $light_blue
+      color: $dark_grey
+      background-color: $light_orange
+      a
+        color: $dark_grey
     th, td
       padding: 15px 20px
     th
-      text-align: left
-      background-color: $blue
-      border-bottom: 1px solid $black
+      text-transform: uppercase
+      color: $white
+      background-color: $orange
 

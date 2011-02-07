@@ -115,7 +115,7 @@ class Team < ActiveRecord::Base
     if league.name.upcase == "MLS"
       scrape_mls
     elsif league.name.upcase == "NFL"
-      scrape_nfl
+      scrape_espn
     end
   end
 
@@ -144,7 +144,7 @@ class Team < ActiveRecord::Base
     end
   end
 
-  def scrape_nfl
+  def scrape_espn
     scraper = Scraper.define do
       array :players_odd
       process ".oddrow", :players_odd => Scraper.define {

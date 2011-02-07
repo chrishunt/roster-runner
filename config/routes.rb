@@ -5,7 +5,7 @@ CodeReplacements::Application.routes.draw do
   resources :teams
   resources :leagues
 
-  root :to => "teams#index"
+  root :to => "leagues#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

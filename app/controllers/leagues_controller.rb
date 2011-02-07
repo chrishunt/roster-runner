@@ -1,6 +1,7 @@
 class LeaguesController < ApplicationController
   def index
     @leagues = League.all
+    redirect_to @leagues.first
   end
 
   def show

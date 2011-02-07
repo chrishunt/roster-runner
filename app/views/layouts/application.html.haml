@@ -11,6 +11,13 @@
     = yield(:head)
 
   %body
+    #header
+      - @leagues.each do |league| 
+        - if !@league.nil? && (@league == league)
+          .selected= link_to league.name, league
+        - else
+          %div= link_to league.name, league
+
     #container
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}"
@@ -19,3 +26,11 @@
         %h1= yield(:title)
 
       = yield
+
+    #footer_container
+      #footer
+        .left
+          = "code replacements"
+        .right
+          = "chris@chrishuntphoto.com"
+        .clear
