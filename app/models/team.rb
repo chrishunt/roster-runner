@@ -6,7 +6,7 @@ class Team < ActiveRecord::Base
 
   def filename
     split = name.split
-    file = "#{league.name.downcase}_#{split[0].downcase}"
+    file = "#{league.short_name.downcase}_#{split[0].downcase}"
     split[1..(split.size)].each do |s|
       file << "_#{s.downcase}"
     end
@@ -85,12 +85,15 @@ class Team < ActiveRecord::Base
       sea1tn << "\n"
       sea1pn << "\n"
       sea1s << "\n"
-      # update return string
+      # add players to return string
       ret << sea1 << sea1p 
       ret << sea1tp << sea1tpn 
       ret << sea1n << sea1tn
       ret << sea1pn << sea1s
     end
+    # add team to return string
+    ret << prefix << "\t" << name << "\n"
+    # return expansions
     ret
   end
 
