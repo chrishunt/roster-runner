@@ -9,20 +9,19 @@ $darker_grey: #231f20
 $dark_grey: #363636
 $grey: #58585a
 $light_grey: #afafb2
+$light_grey: #afafb2
 
 $dark_blue: #4b7399
 $blue: #b9c9fe
 $light_blue: #d0dafd
 $lighter_blue: #e8edff
 
-$primary_color: $canvas
-
 *
   padding: 0
   margin: 0
 
 body
-  background-color: $primary_color
+  background-color: $dark_grey
   font:
     family: Verdana, Helvetica, Arial
     family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif
@@ -41,11 +40,14 @@ a
 h1
   margin-bottom: 20px
   text-align: center
-  color: $dark_grey
+  color: $white
 
 #header
+  -moz-box-shadow: 0 2px 5px $black
+  -webkit-box-shadow: 0 2px 5px $black
+  box-shadow: 0 2px 5px $black
   background-color: $darker_grey
-  color: $grey
+  color: $light_grey
   padding: 20px
   text-align: center
   font-size: 110%
@@ -53,30 +55,26 @@ h1
     display: inline
     text-transform: uppercase
     a, .selected
-      color: $grey
+      color: $light_grey
       text-decoration: none
       -moz-border-radius: 5px
       -webkit-border-radius: 5px
       border-radius: 5px
       padding: 3px 20px
+      &:hover
+        color: $white
   .selected
     a
       color: $white
       background-color: $orange
 
-#footer_container
-  font-size: 110%
-  text-transform: uppercase
-  height: 60px
-
 #footer
   display: none
-  bottom: 0px
-  z-index: 1001
-  position: fixed
-  width: 100%
+  -moz-box-shadow: 0 -2px 5px $black
+  -webkit-box-shadow: 0 -2px 5px $black
+  box-shadow: 0 -2px 5px $black
   padding: 20px 0
-  margin: 0
+  margin: 20px 0 0 0
   text-align: center
   color: $white
   background-color: $darker_grey
@@ -89,10 +87,9 @@ h1
 
 #container
   text-align: center
-  color: $grey
+  color: $white
   width: 75%
   margin: 0 auto
-  background-color: $canvas
   padding: 20px 40px
   margin-top: 20px
 
@@ -138,14 +135,17 @@ h1
     margin: 0
 
 table
+  -moz-box-shadow: 0 5px 20px $black
+  -webkit-box-shadow: 0 5px 20px $black
+  box-shadow: 0 5px 20px $black
   margin-left: auto
   margin-right: auto
-  color: $grey
-  background-color: $canvas
+  color: $darker_grey
+  background-color: $white
   border-collapse: collapse
-  border: 10px solid $light_orange
+  border: 15px solid $darker_grey
   a
-    color: $grey
+    color: $darker_grey
     text-decoration: none
     &:hover
       color: $dark_grey
@@ -160,5 +160,5 @@ table
     th
       text-transform: uppercase
       color: $white
-      background-color: $orange
+      background-color: $darker_grey
 
