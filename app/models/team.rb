@@ -28,9 +28,9 @@ class Team < ActiveRecord::Base
         i = i+1
         group << players[i]
       end
-      i = i + 1
+      i = i+1
 
-      # save prefix
+      # save expansion prefix
       number = group[0].number
       sea1 = "#{prefix}#{number}" << "\t"
       sea1p = "#{prefix}#{number}p" << "\t"
@@ -41,10 +41,22 @@ class Team < ActiveRecord::Base
       sea1pn = "#{prefix}#{number}pn" << "\t"
       sea1s = "#{prefix}#{number}s" << "\t"
 
-      if group.size == 1
-        # save expansion for single player
-        p = group[0] 
-        sea1 << "#{p.name}" 
+      group.each do |p|
+        # tag for flagging duplicates
+        duplicate_tag = "#"
+        # append duplicate tag if multiple players have this number
+        if group.size > 1
+          sea1 << duplicate_tag << " "
+          sea1p << duplicate_tag << " "
+          sea1tp << duplicate_tag << " "
+          sea1tpn << duplicate_tag << " "
+          sea1n << duplicate_tag << " "
+          sea1tn << duplicate_tag << " "
+          sea1pn << duplicate_tag << " "
+          sea1s << duplicate_tag << " "
+        end
+        # save expansion for multiple players
+        sea1 << "#{p.name}"
         sea1p << "#{p.position} #{p.name}"
         sea1tp << "#{p.team.name} #{p.position} #{p.name}"
         sea1tpn << "#{p.team.name} #{p.position} #{p.name} (#{p.number})"
@@ -52,20 +64,18 @@ class Team < ActiveRecord::Base
         sea1tn << "#{p.team.name} #{p.name} (#{p.number})"
         sea1pn << "#{p.position} #{p.name} (#{p.number})"
         sea1s << "[#{p.last_name},#{p.first_name}],"
-      else
-        group.each do |p|
-          # save expansion for multiple players
-          sea1 << "# #{p.name} #" 
-          sea1p << "# #{p.position} #{p.name} #"
-          sea1tp << "# #{p.team.name} #{p.position} #{p.name} #"
-          sea1tpn << "# #{p.team.name} #{p.position} #{p.name} (#{p.number}) #"
-          sea1n << "# #{p.name} (#{p.number}) #"
-          sea1tn << "# #{p.team.name} #{p.name} (#{p.number}) #"
-          sea1pn << "# #{p.position} #{p.name} (#{p.number}) #"
-          sea1s << "# [#{p.last_name},#{p.first_name}], #"
+        # append duplicate tag if multiple players have this number
+        if group.size > 1
+          sea1 << " " << duplicate_tag
+          sea1p << " " << duplicate_tag
+          sea1tp << " " << duplicate_tag
+          sea1tpn << " " << duplicate_tag
+          sea1n << " " << duplicate_tag
+          sea1tn << " " << duplicate_tag
+          sea1pn << " " << duplicate_tag
+          sea1s << " " << duplicate_tag
         end
       end
-
       # add new line at end of expansion
       sea1 << "\n"
       sea1p << "\n"
@@ -75,7 +85,6 @@ class Team < ActiveRecord::Base
       sea1tn << "\n"
       sea1pn << "\n"
       sea1s << "\n"
-
       # update return string
       ret << sea1 << sea1p 
       ret << sea1tp << sea1tpn 
