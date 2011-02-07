@@ -101,7 +101,8 @@ class Team < ActiveRecord::Base
     if league.name.upcase == "MLS"
       scrape_mls_roster
     elsif league.name.upcase == "NFL" ||
-          league.name.upcase == "NBA"
+          league.name.upcase == "NBA" ||
+          league.name.upcase == "MLB"
       scrape_espn_roster
     end
   end
@@ -150,14 +151,31 @@ class Team < ActiveRecord::Base
     results = scraper.scrape(URI.parse(uri))
     players = results.players_even + results.players_odd
     players.each do |p|
+      # skip this row if we're missing data
       next if p[0].nil? || p[1].nil? || p[2].nil?
+
+      number = p[0]
+      number = nil if number == ""
+
+      full_name = p[1]
+      first_name = full_name.split[0]
+      first_name = nil if first_name == ""
+      last_name = full_name.split[1..(full_name.split.size - 1)].join(" ")
+      last_name = nil if last_name == ""
+
+      position = p[2]
+      position = nil if position == ""
+      
+      # skip this row if our data was not as expected
+      next if number.nil? || first_name.nil? || position.nil? || last_name.nil?
+
+      # save this player to the roster
       player = Player.new
       player.team_id = id
-      player.number = p[0]
-      full_name = p[1].split 
-      player.first_name = full_name[0]
-      player.last_name = full_name[1..(full_name.size-1)].join(" ")
-      player.position = p[2]
+      player.number = number
+      player.first_name = first_name
+      player.last_name = last_name
+      player.position = position
       player.save
     end
   end
