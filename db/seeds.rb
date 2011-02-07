@@ -283,8 +283,8 @@ league.save
 
 team = Team.new
 team.league = league
-team.name = ""
-team.uri = ""
+team.name = "Baltimore Orioles"
+team.uri = "http://espn.go.com/mlb/team/roster/_/name/bal/baltimore-orioles"
 team.save
 
 # Build rosters for MLB teams
