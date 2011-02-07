@@ -19,25 +19,27 @@ a {
   overflow: hidden; }
 
 h1 {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
   color: white; }
+  h1 a {
+    color: white;
+    text-decoration: none; }
 
 #header {
   -moz-box-shadow: 0 2px 5px black;
   -webkit-box-shadow: 0 2px 5px black;
   box-shadow: 0 2px 5px black;
   background-color: #231f20;
-  color: #afafb2;
+  color: #a2a2a2;
   padding: 20px;
-  margin-bottom: 25px;
   text-align: center;
   font-size: 110%; }
   #header div {
     display: inline;
     text-transform: uppercase; }
     #header div a, #header div .selected {
-      color: #afafb2;
+      color: #a2a2a2;
       text-decoration: none;
       -moz-border-radius: 5px;
       -webkit-border-radius: 5px;
@@ -68,7 +70,8 @@ h1 {
 
 #container {
   text-align: center;
-  color: white; }
+  color: white;
+  margin: 25px 0; }
 
 #flash_notice,
 #flash_error,
@@ -109,6 +112,22 @@ h1 {
   .error_messages ul {
     margin: 0; }
 
+#code_links {
+  padding: 10px 0;
+  margin-bottom: 10px; }
+
+.code_link {
+  -moz-box-shadow: 2px 2px 5px black;
+  -webkit-box-shadow: 2px 2px 5px black;
+  box-shadow: 2px 2px 5px black;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  color: white;
+  background-color: #231f20; }
+  .code_link:hover {
+    background-color: #58585a; }
+
 table {
   -moz-box-shadow: 0 5px 20px black;
   -webkit-box-shadow: 0 5px 20px black;
@@ -118,7 +137,11 @@ table {
   color: #231f20;
   background-color: white;
   border-collapse: collapse;
-  border: 15px solid #231f20; }
+  border: 15px solid #231f20;
+  margin-top: 20px; }
+  table .code_link {
+    color: #231f20;
+    background-color: #d2d2d2; }
   table a {
     color: #231f20;
     text-decoration: none; }
@@ -126,12 +149,34 @@ table {
       color: #363636; }
   table tr:hover {
     color: #363636;
-    background-color: #ffe1cc; }
+    background-color: #d2d2d2; }
     table tr:hover a {
       color: #363636; }
+    table tr:hover .code_link {
+      background-color: #a2a2a2; }
   table tr th, table tr td {
     padding: 15px 20px; }
   table tr th {
     text-transform: uppercase;
-    color: white;
-    background-color: #231f20; }
+    color: #231f20;
+    background-color: #d2d2d2; }
+
+.team_box a {
+  font-weight: bold;
+  -moz-box-shadow: 0 2px 8px black;
+  -webkit-box-shadow: 0 2px 8px black;
+  box-shadow: 0 2px 8px black;
+  border: 10px solid #231f20;
+  background-color: white;
+  text-decoration: none;
+  color: #231f20;
+  margin: 10px;
+  padding: 15px;
+  float: left; }
+
+#prefix_dialog {
+  display: none; }
+  #prefix_dialog input {
+    width: 100%; }
+  #prefix_dialog p {
+    margin: 0 0 10px 0; }

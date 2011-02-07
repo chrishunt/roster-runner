@@ -8,8 +8,8 @@ $canvas: #fdfdfd
 $darker_grey: #231f20
 $dark_grey: #363636
 $grey: #58585a
-$light_grey: #afafb2
-$light_grey: #afafb2
+$light_grey: #a2a2a2
+$lighter_grey: #d2d2d2
 
 $dark_blue: #4b7399
 $blue: #b9c9fe
@@ -38,9 +38,12 @@ a
   overflow: hidden
 
 h1
-  margin-bottom: 20px
+  margin-bottom: 10px
   text-align: center
   color: $white
+  a
+    color: $white
+    text-decoration: none
 
 #header
   -moz-box-shadow: 0 2px 5px $black
@@ -49,7 +52,6 @@ h1
   background-color: $darker_grey
   color: $light_grey
   padding: 20px
-  margin-bottom: 25px
   text-align: center
   font-size: 110%
   div
@@ -89,6 +91,7 @@ h1
 #container
   text-align: center
   color: $white
+  margin: 25px 0
 
 #flash_notice,
 #flash_error,
@@ -131,6 +134,22 @@ h1
   ul
     margin: 0
 
+#code_links
+  padding: 10px 0
+  margin-bottom: 10px
+
+.code_link
+  -moz-box-shadow: 2px 2px 5px $black
+  -webkit-box-shadow: 2px 2px 5px $black
+  box-shadow: 2px 2px 5px $black
+  text-decoration: none
+  text-transform: uppercase
+  padding: 5px 10px
+  color: $white
+  background-color: $darker_grey
+  &:hover
+    background-color: $grey
+
 table
   -moz-box-shadow: 0 5px 20px $black
   -webkit-box-shadow: 0 5px 20px $black
@@ -141,6 +160,10 @@ table
   background-color: $white
   border-collapse: collapse
   border: 15px solid $darker_grey
+  margin-top: 20px
+  .code_link
+    color: $darker_grey
+    background-color: $lighter_grey
   a
     color: $darker_grey
     text-decoration: none
@@ -149,13 +172,35 @@ table
   tr
     &:hover
       color: $dark_grey
-      background-color: $light_orange
+      background-color: $lighter_grey
       a
         color: $dark_grey
+      .code_link
+        background-color: $light_grey
     th, td
       padding: 15px 20px
     th
       text-transform: uppercase
-      color: $white
-      background-color: $darker_grey
+      color: $darker_grey
+      background-color: $lighter_grey
 
+.team_box
+  a
+    font-weight: bold
+    -moz-box-shadow: 0 2px 8px $black
+    -webkit-box-shadow: 0 2px 8px $black
+    box-shadow: 0 2px 8px $black
+    border: 10px solid $darker_grey
+    background-color: $white
+    text-decoration: none
+    color: $darker_grey
+    margin: 10px
+    padding: 15px
+    float: left
+
+#prefix_dialog
+  display: none
+  input
+    width: 100%
+  p
+    margin: 0 0 10px 0
