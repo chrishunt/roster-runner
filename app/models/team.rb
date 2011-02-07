@@ -33,7 +33,10 @@ class Team < ActiveRecord::Base
       # save expansion prefix
       number = group[0].number
       sea1 = "#{prefix}#{number}" << "\t"
+      sea1f = "#{prefix}#{number}f" << "\t"
+      sea1l = "#{prefix}#{number}l" << "\t"
       sea1p = "#{prefix}#{number}p" << "\t"
+      sea1t = "#{prefix}#{number}t" << "\t"
       sea1tp = "#{prefix}#{number}tp" << "\t"
       sea1tpn = "#{prefix}#{number}tpn" << "\t"
       sea1n = "#{prefix}#{number}n" << "\t" 
@@ -47,6 +50,9 @@ class Team < ActiveRecord::Base
         # append duplicate tag if multiple players have this number
         if group.size > 1
           sea1 << duplicate_tag << " "
+          sea1f << duplicate_tag << " "
+          sea1l << duplicate_tag << " "
+          sea1t << duplicate_tag << " "
           sea1p << duplicate_tag << " "
           sea1tp << duplicate_tag << " "
           sea1tpn << duplicate_tag << " "
@@ -56,8 +62,11 @@ class Team < ActiveRecord::Base
           sea1s << duplicate_tag << " "
         end
         # save expansion for multiple players
-        sea1 << "#{p.name}"
+        sea1 << "#{p.team.name} #{p.position} #{p.name} (#{p.number})"
+        sea1f << "#{p.first_name}"
+        sea1l << "#{p.last_name}"
         sea1p << "#{p.position} #{p.name}"
+        sea1t << "#{p.team.name}'s #{p.name}"
         sea1tp << "#{p.team.name} #{p.position} #{p.name}"
         sea1tpn << "#{p.team.name} #{p.position} #{p.name} (#{p.number})"
         sea1n << "#{p.name} (#{p.number})"
@@ -67,7 +76,10 @@ class Team < ActiveRecord::Base
         # append duplicate tag if multiple players have this number
         if group.size > 1
           sea1 << " " << duplicate_tag
+          sea1f << " " << duplicate_tag
+          sea1l << " " << duplicate_tag
           sea1p << " " << duplicate_tag
+          sea1t << " " << duplicate_tag
           sea1tp << " " << duplicate_tag
           sea1tpn << " " << duplicate_tag
           sea1n << " " << duplicate_tag
@@ -78,7 +90,10 @@ class Team < ActiveRecord::Base
       end
       # add new line at end of expansion
       sea1 << "\n"
+      sea1f << "\n"
+      sea1l << "\n"
       sea1p << "\n"
+      sea1t << "\n"
       sea1tp << "\n"
       sea1tpn << "\n"
       sea1n << "\n"
@@ -86,9 +101,8 @@ class Team < ActiveRecord::Base
       sea1pn << "\n"
       sea1s << "\n"
       # add players to return string
-      ret << sea1 << sea1p 
-      ret << sea1tp << sea1tpn 
-      ret << sea1n << sea1tn
+      ret << sea1 << sea1f << sea1l << sea1p << sea1t
+      ret << sea1tp << sea1tpn << sea1n << sea1tn
       ret << sea1pn << sea1s
     end
     # add team to return string
