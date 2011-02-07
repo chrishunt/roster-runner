@@ -260,6 +260,22 @@ league.teams.each do |team|
   team.scrape_roster
 end
 
+# Build MLS league
+league = League.new
+league.name = "NBA"
+league.save
+
+team = Team.new
+team.league = league
+team.name = "Boston Celtics"
+team.uri = "http://espn.go.com/nba/team/roster/_/name/bos/boston-celtics"
+team.save
+
+# Build rosters for NBA teams
+league.teams.each do |team|
+  team.scrape_roster
+end
+
 # Load from CSV
 #CSV_DIR = "csv"
 #

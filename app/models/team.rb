@@ -100,7 +100,8 @@ class Team < ActiveRecord::Base
     # Scrape according to league
     if league.name.upcase == "MLS"
       scrape_mls_roster
-    elsif league.name.upcase == "NFL"
+    elsif league.name.upcase == "NFL" ||
+          league.name.upcase == "NBA"
       scrape_espn_roster
     end
   end
