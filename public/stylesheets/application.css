@@ -30,6 +30,7 @@ h1 {
   background-color: #231f20;
   color: #afafb2;
   padding: 20px;
+  margin-bottom: 25px;
   text-align: center;
   font-size: 110%; }
   #header div {
@@ -67,11 +68,7 @@ h1 {
 
 #container {
   text-align: center;
-  color: white;
-  width: 75%;
-  margin: 0 auto;
-  padding: 20px 40px;
-  margin-top: 20px; }
+  color: white; }
 
 #flash_notice,
 #flash_error,
