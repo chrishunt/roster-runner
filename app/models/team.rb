@@ -98,11 +98,11 @@ class Team < ActiveRecord::Base
     # Delete all players on this team
     players.destroy_all 
     # Scrape according to league
-    if league.name.upcase == "MLS"
+    if league.short_name.upcase == "MLS"
       scrape_mls_roster
-    elsif league.name.upcase == "NFL" ||
-          league.name.upcase == "NBA" ||
-          league.name.upcase == "MLB"
+    elsif league.short_name.upcase == "NFL" ||
+          league.short_name.upcase == "NBA" ||
+          league.short_name.upcase == "MLB"
       scrape_espn_roster
     end
   end

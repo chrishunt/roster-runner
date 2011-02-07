@@ -1,6 +1,7 @@
 # Build MLS league
 league = League.new
-league.name = "MLS"
+league.short_name = "MLS"
+league.name = "Major League Soccer"
 league.save
 
 team = Team.new
@@ -91,7 +92,8 @@ end
 
 # Build NFL league
 league = League.new
-league.name = "NFL"
+league.short_name = "NFL"
+league.name = "National Football League"
 league.save
 
 team = Team.new
@@ -262,7 +264,8 @@ end
 
 # Build NBA league
 league = League.new
-league.name = "NBA"
+league.short_name = "NBA"
+league.name = "National Basketball Association"
 league.save
 
 team = Team.new
@@ -278,7 +281,8 @@ end
 
 # Build MLB league
 league = League.new
-league.name = "MLB"
+league.short_name = "MLB"
+league.name = "Major League Baseball"
 league.save
 
 team = Team.new
