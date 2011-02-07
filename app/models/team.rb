@@ -111,6 +111,7 @@ class Team < ActiveRecord::Base
   def scrape
     # Delete all players on this team
     players.destroy_all 
+    # Scrape according to league
     if league.name.upcase == "MLS"
       scrape_mls
     elsif league.name.upcase == "NFL"
@@ -160,7 +161,8 @@ class Team < ActiveRecord::Base
       result :players_odd, :players_even
     end
     results = scraper.scrape(URI.parse(uri))
-    results.players_even.each do |p|
+    players = results.players_even + results.players_odd
+    players.each do |p|
       next if p[0].nil? || p[1].nil? || p[2].nil?
       player = Player.new
       player.team_id = id
@@ -169,16 +171,7 @@ class Team < ActiveRecord::Base
       player.first_name = full_name[0]
       player.last_name = full_name[1..(full_name.size-1)].join(" ")
       player.position = p[2]
-    end
-    results.players_odd.each do |p|
-      next if p[0].nil? || p[1].nil? || p[2].nil?
-      player = Player.new
-      player.team_id = id
-      player.number = p[0]
-      full_name = p[1].split 
-      player.first_name = full_name[0]
-      player.last_name = full_name[1..(full_name.size-1)].join(" ")
-      player.position = p[2]
+      player.save
     end
   end
 end

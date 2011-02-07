@@ -19,11 +19,8 @@ end
 uri = URI.parse("http://espn.go.com/nfl/team/roster/_/name/wsh/washington-redskins")
 
 results = scraper.scrape(uri)
-players = results.players_even << results.players_odd
-players.each do |player|
-  puts "Number: #{player[0]}"
-  name = player[1].split 
-  puts "First Name: #{name[0]}"
-  puts "Last Name: #{name[1..(name.size-1)].join(" ")}"
-  puts "Position: #{player[2]}"
-end
+
+one = [["1","2","3"],["4","5","6"]]
+two = [["7","8","9"],["10","11","12"]]
+together = one + two
+puts together.inspect
