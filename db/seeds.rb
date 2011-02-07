@@ -96,108 +96,163 @@ league.save
 
 team = Team.new
 team.league = league
+team.name = "Jacksonville Jaguars"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/jac/jacksonville-jaguars"
+team.save
+team = Team.new
+team.league = league
+team.name = "Indianapolis Colts"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/ind/indianapolis-colts"
+team.save
+team = Team.new
+team.league = league
+team.name = "Atlanta Falcons"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/atl/atlanta-falcons"
+team.save
+team = Team.new
+team.league = league
+team.name = "Baltimore Ravens"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/bal/baltimore-ravens"
+team.save
+team = Team.new
+team.league = league
+team.name = "Chicago Bears"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/chi/chicago-bears"
+team.save
+team = Team.new
+team.league = league
+team.name = "Dallas Cowboys"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/dal/dallas-cowboys"
+team.save
+team = Team.new
+team.league = league
 team.name = "New York Jets"
-team.uri = "http://www.newyorkjets.com/team/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/nyj/new-york-jets"
 team.save
 team = Team.new
 team.league = league
 team.name = "Cincinnati Bengals"
-team.uri = "http://www.bengals.com/team/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/cin/cincinnati-bengals"
 team.save
 team = Team.new
 team.league = league
 team.name = "Cleveland Browns"
-team.uri = "http://www.clevelandbrowns.com/team/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/cle/cleveland-browns"
 team.save
 team = Team.new
 team.league = league
 team.name = "Pittsburgh Steelers"
-team.uri = "http://www.steelers.com/team/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/pit/pittsburgh-steelers"
 team.save
 team = Team.new
 team.league = league
 team.name = "Houston Texans"
-team.uri = "http://www.houstontexans.com/team/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/hou/houston-texans"
 team.save
 team = Team.new
 team.league = league
 team.name = "Tennessee Titans"
-team.uri = "http://www.titansonline.com/team/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/ten/tennessee-titans"
 team.save
 team = Team.new
 team.league = league
 team.name = "Denver Broncos"
-team.uri = "http://www.denverbroncos.com/team/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/den/denver-broncos"
 team.save
 team = Team.new
 team.league = league
 team.name = "Kansas City Chiefs"
-team.uri = "http://www.kcchiefs.com/team/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/kc/kansas-city-chiefs"
 team.save
 team = Team.new
 team.league = league
 team.name = "Oakland Raiders"
-team.uri = "http://www.raiders.com/team/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/oak/oakland-raiders"
 team.save
 team = Team.new
 team.league = league
 team.name = "San Diego Chargers"
-team.uri = "http://www.chargers.com/team/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/sd/san-diego-chargers"
 team.save
 team = Team.new
 team.league = league
 team.name = "Detriot Lions"
-team.uri = "http://www.detroitlions.com/team/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/det/detroit-lions"
 team.save
 team = Team.new
 team.league = league
 team.name = "Green Bay Packers"
-team.uri = "http://www.packers.com/team/players.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/gb/green-bay-packers"
 team.save
 team = Team.new
 team.league = league
 team.name = "Minnesota Vikings"
-team.uri = "http://www.vikings.com/team/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/min/minnesota-vikings"
 team.save
 team = Team.new
 team.league = league
 team.name = "Carolina Panthers"
-team.uri = "http://www.panthers.com/team/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/car/carolina-panthers"
 team.save
 team = Team.new
 team.league = league
 team.name = "New Orleans Saints"
-team.uri = "http://www.neworleanssaints.com/team/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/no/new-orleans-saints"
 team.save
 team = Team.new
 team.league = league
 team.name = "Tampa Bay Buccaneers"
-team.uri = "http://www.buccaneers.com/team-and-stats/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/tb/tampa-bay-buccaneers"
 team.save
 team = Team.new
 team.league = league
 team.name = "Arizona Cardinals"
-team.uri = "http://www.azcardinals.com/team/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/ari/arizona-cardinals"
 team.save
 team = Team.new
 team.league = league
 team.name = "St. Louis Rams"
-team.uri = "http://www.stlouisrams.com/team/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/stl/st-louis-rams"
 team.save
 team = Team.new
 team.league = league
 team.name = "San Francisco 49ers"
-team.uri = "http://www.49ers.com/team/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/sf/san-francisco-49ers"
 team.save
 team = Team.new
 team.league = league
 team.name = "Seattle Seahawks"
-team.uri = "http://www.seahawks.com/team/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/sea/seattle-seahawks"
 team.save
 team = Team.new
 team.league = league
 team.name = "Buffalo Bills"
-team.uri = "http://www.buffalobills.com/team/roster.html"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/buf/buffalo-bills"
+team.save
+team = Team.new
+team.league = league
+team.name = "New York Giants"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/nyg/new-york-giants"
+team.save
+team = Team.new
+team.league = league
+team.name = "Miami Dolphins"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/mia/miami-dolphins"
+team.save
+team = Team.new
+team.league = league
+team.name = "Philadelphia Eagles"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/phi/philadelphia-eagles"
+team.save
+team = Team.new
+team.league = league
+team.name = "New England Patriots"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/ne/new-england-patriots"
+team.save
+team = Team.new
+team.league = league
+team.name = "Washington Redskins"
+team.uri = "http://espn.go.com/nfl/team/roster/_/name/wsh/washington-redskins"
 team.save
 
 # Build rosters for NFL teams

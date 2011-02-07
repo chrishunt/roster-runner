@@ -1,7 +1,7 @@
 class Team < ActiveRecord::Base
   attr_accessible :name
   validates_presence_of :name, :league, :uri
-  has_many :players, :order => "number"
+  has_many :players, :order => :number
   belongs_to :league
 
   def filename
