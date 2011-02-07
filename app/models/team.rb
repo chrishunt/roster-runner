@@ -32,78 +32,55 @@ class Team < ActiveRecord::Base
 
       # save expansion prefix
       number = group[0].number
-      sea1 = "#{prefix}#{number}" << "\t"
-      sea1f = "#{prefix}#{number}f" << "\t"
-      sea1l = "#{prefix}#{number}l" << "\t"
-      sea1p = "#{prefix}#{number}p" << "\t"
-      sea1t = "#{prefix}#{number}t" << "\t"
-      sea1tp = "#{prefix}#{number}tp" << "\t"
-      sea1tpn = "#{prefix}#{number}tpn" << "\t"
-      sea1n = "#{prefix}#{number}n" << "\t" 
-      sea1tn = "#{prefix}#{number}tn" << "\t"
-      sea1pn = "#{prefix}#{number}pn" << "\t"
-      sea1s = "#{prefix}#{number}s" << "\t"
+      expansions = {}
+      expansions[:sea1] = "#{prefix}#{number}" << "\t"
+      expansions[:sea1f] = "#{prefix}#{number}f" << "\t"
+      expansions[:sea1l] = "#{prefix}#{number}l" << "\t"
+      expansions[:sea1p] = "#{prefix}#{number}p" << "\t"
+      expansions[:sea1t] = "#{prefix}#{number}t" << "\t"
+      expansions[:sea1n] = "#{prefix}#{number}n" << "\t" 
+      expansions[:sea1tp] = "#{prefix}#{number}tp" << "\t"
+      expansions[:sea1tn] = "#{prefix}#{number}tn" << "\t"
+      expansions[:sea1pn] = "#{prefix}#{number}pn" << "\t"
+      expansions[:sea1tpn] = "#{prefix}#{number}tpn" << "\t"
+      expansions[:sea1s] = "#{prefix}#{number}s" << "\t"
 
       group.each do |p|
         # tag for flagging duplicates
-        duplicate_tag = "#"
+        duplicate_tag = "##"
         # append duplicate tag if multiple players have this number
         if group.size > 1
-          sea1 << duplicate_tag << " "
-          sea1f << duplicate_tag << " "
-          sea1l << duplicate_tag << " "
-          sea1t << duplicate_tag << " "
-          sea1p << duplicate_tag << " "
-          sea1tp << duplicate_tag << " "
-          sea1tpn << duplicate_tag << " "
-          sea1n << duplicate_tag << " "
-          sea1tn << duplicate_tag << " "
-          sea1pn << duplicate_tag << " "
-          sea1s << duplicate_tag << " "
+          expansions.each do |key, value|
+            expansions[key] << duplicate_tag
+          end
         end
-        # save expansion for multiple players
-        sea1 << "#{p.team.name} #{p.position} #{p.name} (#{p.number})"
-        sea1f << "#{p.first_name}"
-        sea1l << "#{p.last_name}"
-        sea1p << "#{p.position} #{p.name}"
-        sea1t << "#{p.team.name}'s #{p.name}"
-        sea1tp << "#{p.team.name} #{p.position} #{p.name}"
-        sea1tpn << "#{p.team.name} #{p.position} #{p.name} (#{p.number})"
-        sea1n << "#{p.name} (#{p.number})"
-        sea1tn << "#{p.team.name} #{p.name} (#{p.number})"
-        sea1pn << "#{p.position} #{p.name} (#{p.number})"
-        sea1s << "[#{p.last_name},#{p.first_name}],"
+        # save expansion each player
+        expansions[:sea1] << "#{p.team.name} #{p.position} #{p.name} (#{p.number})"
+        expansions[:sea1f] << "#{p.first_name}"
+        expansions[:sea1l] << "#{p.last_name}"
+        expansions[:sea1p] << "#{p.position} #{p.name}"
+        expansions[:sea1t] << "#{p.team.name}'s #{p.name}"
+        expansions[:sea1n] << "#{p.name} (#{p.number})"
+        expansions[:sea1tp] << "#{p.team.name} #{p.position} #{p.name}"
+        expansions[:sea1tn] << "#{p.team.name} #{p.name} (#{p.number})"
+        expansions[:sea1pn] << "#{p.position} #{p.name} (#{p.number})"
+        expansions[:sea1tpn] << "#{p.team.name} #{p.position} #{p.name} (#{p.number})"
+        expansions[:sea1s] << "[#{p.last_name},#{p.first_name}],"
         # append duplicate tag if multiple players have this number
         if group.size > 1
-          sea1 << " " << duplicate_tag
-          sea1f << " " << duplicate_tag
-          sea1l << " " << duplicate_tag
-          sea1p << " " << duplicate_tag
-          sea1t << " " << duplicate_tag
-          sea1tp << " " << duplicate_tag
-          sea1tpn << " " << duplicate_tag
-          sea1n << " " << duplicate_tag
-          sea1tn << " " << duplicate_tag
-          sea1pn << " " << duplicate_tag
-          sea1s << " " << duplicate_tag
+          expansions.each do |key, value|
+            expansions[key] << duplicate_tag
+          end
         end
       end
       # add new line at end of expansion
-      sea1 << "\n"
-      sea1f << "\n"
-      sea1l << "\n"
-      sea1p << "\n"
-      sea1t << "\n"
-      sea1tp << "\n"
-      sea1tpn << "\n"
-      sea1n << "\n"
-      sea1tn << "\n"
-      sea1pn << "\n"
-      sea1s << "\n"
+      expansions.each do |key, value|
+        expansions[key] << "\n"
+      end
       # add players to return string
-      ret << sea1 << sea1f << sea1l << sea1p << sea1t
-      ret << sea1tp << sea1tpn << sea1n << sea1tn
-      ret << sea1pn << sea1s
+      expansions.each do |key, value|
+        ret << value
+      end
     end
     # add team to return string
     ret << prefix << "\t" << name << "\n"
