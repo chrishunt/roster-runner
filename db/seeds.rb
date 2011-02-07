@@ -86,7 +86,7 @@ team.save
 
 # Build rosters for MLS teams
 league.teams.each do |team|
-  team.scrape
+  team.scrape_roster
 end
 
 # Build NFL league
@@ -257,7 +257,7 @@ team.save
 
 # Build rosters for NFL teams
 league.teams.each do |team|
-  team.scrape
+  team.scrape_roster
 end
 
 # Load from CSV
