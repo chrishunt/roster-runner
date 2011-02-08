@@ -3,7 +3,7 @@
 
   %head
     %title
-      = yield(:title) || "Untitled"
+      = "#{@title} | Roster Snippets by Roser Runner"
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
     = stylesheet_link_tag :all
     = javascript_include_tag 'jquery.min','jquery-ui.min','rails','application'
@@ -12,15 +12,15 @@
 
   %body
     #header
-      - if @league.nil?
-        .selected= link_to "About", about_path
-      - else
-        %div= link_to "About", about_path
       - @leagues.each do |league| 
         - if !@league.nil? && (@league == league)
           .selected= link_to league.short_name, league
         - else
           %div= link_to league.short_name, league
+      - if @league.nil?
+        .selected= link_to "About", about_path
+      - else
+        %div= link_to "About", about_path
 
     #container
       - flash.each do |name, msg|
