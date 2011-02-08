@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_filter :redirect_to_root, :except => [:show, :code]
+  before_filter :redirect_to_root, :except => [:show, :code, :custom]
 
   def index
     @teams = Team.all
@@ -56,5 +56,8 @@ class TeamsController < ApplicationController
       response.headers['Content-Disposition'] = "attachment; filename=#{@team.filename}"
       render :text => @team.code(prefix)
     end
+  end
+
+  def custom
   end
 end

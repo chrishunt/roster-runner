@@ -12,15 +12,7 @@
 
   %body
     #header
-      - @leagues.each do |league| 
-        - if !@league.nil? && (@league == league)
-          .selected= link_to league.short_name, league
-        - else
-          %div= link_to league.short_name, league
-      - if @league.nil?
-        .selected= link_to "About", about_path
-      - else
-        %div= link_to "About", about_path
+      - header
 
     #container
       - flash.each do |name, msg|
@@ -28,27 +20,8 @@
 
       = yield
 
-    #footer
-      .left
-        = "code replacements"
-      .right
-        = "chris@chrishuntphoto.com"
-      .clear
-    
     #prefix_dialog{:title => "Download Roster Snippets"}
-      %p= "Customize the prefix for this team's generated roster snippets."
-      %form
-        %input{:type => "text", 
-          :name => "prefix", 
-          :id => "prefix_dialog_input"}
-        %input{:type => "hidden", 
-          :name => "prefix_dialog_team_id", 
-          :id => "prefix_dialog_team_id",
-          :value => ""}
-        %input{:type => "hidden", 
-          :name => "prefix_dialog_form", 
-          :id => "prefix_dialog_form",
-          :value => ""}
+      - prefix_dialog
 
     / Load user voice script
-    %script{:type => "text/javascript",:src => "/javascripts/user-voice.js"}
+    = javascript_include_tag 'user-voice'

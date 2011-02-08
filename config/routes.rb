@@ -2,6 +2,7 @@ CodeReplacements::Application.routes.draw do
   match 'teams/:id/code' => 'teams#code', :as => :code
 
   match 'about' => 'about#index'
+  match 'teams/custom', :as => :custom_team
 
   resources :leagues
   resources :teams

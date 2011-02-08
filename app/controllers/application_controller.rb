@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :leagues
+  before_filter :get_leagues
 
-  def leagues
+  def get_leagues
     @leagues = League.all
   end
 
