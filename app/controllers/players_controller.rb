@@ -1,4 +1,6 @@
 class PlayersController < ApplicationController
+  before_filter :redirect_to_root
+
   def index
     @players = Player.all
   end

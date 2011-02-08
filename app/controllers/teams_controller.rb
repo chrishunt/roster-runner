@@ -1,4 +1,6 @@
 class TeamsController < ApplicationController
+  before_filter :redirect_to_root, :except => [:show, :code]
+
   def index
     @teams = Team.all
   end

@@ -3,9 +3,9 @@ CodeReplacements::Application.routes.draw do
 
   match 'about' => 'about#index'
 
-  resources :players
-  resources :teams
   resources :leagues
+  resources :teams
+  resources :players
 
   root :to => "about#index"
 

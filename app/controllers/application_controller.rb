@@ -5,4 +5,8 @@ class ApplicationController < ActionController::Base
   def leagues
     @leagues = League.all
   end
+
+  def redirect_to_root
+    redirect_to '/'
+  end
 end
