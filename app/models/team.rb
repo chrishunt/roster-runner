@@ -3,6 +3,8 @@ class Team < ActiveRecord::Base
   validates_presence_of :name, :league, :uri
   has_many :players, :order => :number
   belongs_to :league
+  default_scope order(:name)
+
 
   def filename
     split = name.split
@@ -117,6 +119,7 @@ class Team < ActiveRecord::Base
     results.players.each do |p|
       next if p[:number].nil? || p[:name].nil? || p[:position].nil?
       player = Player.new
+      player.is_custom = false
       player.team_id = id
       player.number = p[:number]
       player.position = p[:position]
@@ -165,6 +168,7 @@ class Team < ActiveRecord::Base
 
       # save this player to the roster
       player = Player.new
+      player.is_custom = false
       player.team_id = id
       player.number = number
       player.first_name = first_name
@@ -172,6 +176,35 @@ class Team < ActiveRecord::Base
       player.position = position
       player.save
     end
+  end
+
+  def self.code_from_csv(csv, team_name, league_name, prefix = nil)
+    league = League.new
+    league.is_custom = true
+    league.short_name = league_name.nil? ? "NA" : league_name
+    league.save
+
+    team = Team.new
+    team.is_custom = true
+    team.name = team_name.to_s
+    team.league = league
+    team.uri = "http://rosterrunner.com"
+    team.save
+
+    rows = CsvMapper.import(csv.to_s, :type => :io) do
+      [number, position, first_name, last_name]
+    end
+    rows.each do |r|
+      player = Player.new
+      player.is_custom = true
+      player.team = team
+      player.number = r[:number]
+      player.position = r[:position]
+      player.first_name = r[:first_name]
+      player.last_name = r[:last_name]
+      player.save
+    end
+    prefix.nil? ? team.code : team.code(prefix)
   end
 end
 

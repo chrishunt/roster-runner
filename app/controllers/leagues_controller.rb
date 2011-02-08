@@ -2,7 +2,6 @@ class LeaguesController < ApplicationController
   before_filter :redirect_to_root, :except => [:index, :show]
 
   def index
-    @leagues = League.all
     redirect_to @leagues.first
   end
 
