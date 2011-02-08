@@ -1,11 +1,13 @@
 CodeReplacements::Application.routes.draw do
   match 'teams/:id/code' => 'teams#code', :as => :code
 
+  match 'about' => 'about#index'
+
   resources :players
   resources :teams
   resources :leagues
 
-  root :to => "leagues#index"
+  root :to => "about#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

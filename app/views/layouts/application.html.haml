@@ -12,6 +12,10 @@
 
   %body
     #header
+      - if @league.nil?
+        .selected= link_to "About", about_path
+      - else
+        %div= link_to "About", about_path
       - @leagues.each do |league| 
         - if !@league.nil? && (@league == league)
           .selected= link_to league.short_name, league
