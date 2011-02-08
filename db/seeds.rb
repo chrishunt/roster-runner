@@ -1,3 +1,22 @@
+# Build MLB league
+league = League.new
+league.is_custom = false
+league.short_name = "MLB"
+league.name = "Major League Baseball"
+league.save
+
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "Baltimore Orioles"
+team.uri = "http://espn.go.com/mlb/team/roster/_/name/bal/baltimore-orioles"
+team.save
+
+# Build rosters for MLB teams
+league.teams.each do |team|
+  team.scrape_roster
+end
+
 # Build MLS league
 league = League.new
 league.is_custom = false
@@ -103,6 +122,25 @@ team.uri = "http://www.mlssoccer.com/players/toronto-fc"
 team.save
 
 # Build rosters for MLS teams
+league.teams.each do |team|
+  team.scrape_roster
+end
+
+# Build NBA league
+league = League.new
+league.is_custom = false
+league.short_name = "NBA"
+league.name = "National Basketball Association"
+league.save
+
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "Boston Celtics"
+team.uri = "http://espn.go.com/nba/team/roster/_/name/bos/boston-celtics"
+team.save
+
+# Build rosters for NBA teams
 league.teams.each do |team|
   team.scrape_roster
 end
@@ -308,44 +346,6 @@ team.uri = "http://espn.go.com/nfl/team/roster/_/name/wsh/washington-redskins"
 team.save
 
 # Build rosters for NFL teams
-league.teams.each do |team|
-  team.scrape_roster
-end
-
-# Build NBA league
-league = League.new
-league.is_custom = false
-league.short_name = "NBA"
-league.name = "National Basketball Association"
-league.save
-
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Boston Celtics"
-team.uri = "http://espn.go.com/nba/team/roster/_/name/bos/boston-celtics"
-team.save
-
-# Build rosters for NBA teams
-league.teams.each do |team|
-  team.scrape_roster
-end
-
-# Build MLB league
-league = League.new
-league.is_custom = false
-league.short_name = "MLB"
-league.name = "Major League Baseball"
-league.save
-
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Baltimore Orioles"
-team.uri = "http://espn.go.com/mlb/team/roster/_/name/bal/baltimore-orioles"
-team.save
-
-# Build rosters for MLB teams
 league.teams.each do |team|
   team.scrape_roster
 end

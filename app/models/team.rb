@@ -3,7 +3,6 @@ class Team < ActiveRecord::Base
   validates_presence_of :name, :league, :uri
   has_many :players, :order => :number
   belongs_to :league
-  default_scope order(:name)
 
 
   def filename
@@ -90,16 +89,19 @@ class Team < ActiveRecord::Base
     ret
   end
 
-  def scrape_roster
+  def scrape_roster(csv = nil)
     # Delete all players on this team
     players.destroy_all 
+    league_name = league.short_name.upcase
     # Scrape according to league
-    if league.short_name.upcase == "MLS"
+    if league_name == "MLS"
       scrape_mls_roster
-    elsif league.short_name.upcase == "NFL" ||
-          league.short_name.upcase == "NBA" ||
-          league.short_name.upcase == "MLB"
+    elsif league_name == "NFL" ||
+          league_name == "NBA" ||
+          league_name == "MLB"
       scrape_espn_roster
+    elsif league_name == "CSV" && !csv.nil?
+      scrape_csv_roster(csv)
     end
   end
 
@@ -178,33 +180,31 @@ class Team < ActiveRecord::Base
     end
   end
 
-  def self.code_from_csv(csv, team_name, league_name, prefix = nil)
-    league = League.new
-    league.is_custom = true
-    league.short_name = league_name.nil? ? "NA" : league_name
-    league.save
-
-    team = Team.new
-    team.is_custom = true
-    team.name = team_name.to_s
-    team.league = league
-    team.uri = "http://rosterrunner.com"
-    team.save
-
+  def scrape_csv_roster(csv)
     rows = CsvMapper.import(csv.to_s, :type => :io) do
       [number, position, first_name, last_name]
     end
     rows.each do |r|
       player = Player.new
       player.is_custom = true
-      player.team = team
+      player.team_id = id
       player.number = r[:number]
       player.position = r[:position]
       player.first_name = r[:first_name]
       player.last_name = r[:last_name]
       player.save
     end
-    prefix.nil? ? team.code : team.code(prefix)
+  end
+
+  def to_csv
+    csv = ""
+    players.each do |player|
+      csv << player.number.to_s << ","
+      csv << player.position << ","
+      csv << player.first_name << ","
+      csv << player.last_name << "\n"
+    end
+    return csv
   end
 end
 

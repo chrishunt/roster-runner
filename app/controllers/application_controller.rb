@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_filter :get_leagues
 
   def get_leagues
-    @leagues = League.where("is_custom == ?", false)
+    @leagues = League.where("is_custom == ?", false).order(:name)
   end
 
   def redirect_to_root
