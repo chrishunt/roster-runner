@@ -59,5 +59,12 @@ class TeamsController < ApplicationController
   end
 
   def custom
+    @csv = params[:csv_text_area]
+    @team_name = params[:custom_team_name]
+    if !(@csv.nil? || @csv == "" || @team_name.nil? || @team_name == "")
+      @team = Team.new_custom(@team_name)
+      @team.scrape_roster(@csv)
+      redirect_to @team
+    end
   end
 end

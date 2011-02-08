@@ -5,6 +5,21 @@ class Team < ActiveRecord::Base
   belongs_to :league
 
 
+  def self.new_custom(team_name)
+    league = League.new
+    league.is_custom = true
+    league.name = "Custom League"
+    league.short_name = "CSV"
+    league.save
+    team = Team.new
+    team.is_custom = true
+    team.name = team_name
+    team.league = league
+    team.uri = "http://rosterrunner.com"
+    team.save
+    return team
+  end
+
   def filename
     split = name.split
     file = "#{league.short_name.downcase}_#{split[0].downcase}"
@@ -206,5 +221,6 @@ class Team < ActiveRecord::Base
     end
     return csv
   end
+
 end
 
