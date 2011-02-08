@@ -11,7 +11,6 @@ gem 'thin'
 gem 'jquery-rails'
 gem 'csv-mapper'
 gem 'scrapi'
-gem 'heroku'
 
 group :console do
   gem 'wirble'
@@ -19,7 +18,9 @@ group :console do
 end
 
 group :development do
+  gem 'heroku'
   gem 'nifty-generators'
+  gem 'taps'
 end
 
 # Use unicorn as the web server
