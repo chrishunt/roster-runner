@@ -1,10 +1,11 @@
 - @title = "Custom Team Roster"
 %h1= "Custom Roster"
 
-= form_tag :action => "custom" do
-  = label_tag "Team Name"
-  = text_field_tag :custom_team_name, @team_name
-  %br
-  = text_area_tag :csv_text_area, @csv
-  %br
-  = submit_tag "Create Roster"
+#custom_roster_form_container
+  = form_tag :action => "custom" do
+    = label_tag "Team Name"
+    = text_field_tag :custom_team_name, @team_name
+    %br
+    = text_area_tag :csv_text_area, @csv
+    %br
+    = submit_tag "Create Roster"
