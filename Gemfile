@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,6 +11,7 @@ gem 'thin'
 gem 'jquery-rails'
 gem 'csv-mapper'
 gem 'scrapi'
+gem 'heroku'
 
 group :console do
   gem 'wirble'
