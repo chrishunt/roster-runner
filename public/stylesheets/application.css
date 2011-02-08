@@ -19,6 +19,7 @@ a {
   overflow: hidden; }
 
 h1 {
+  font-size: 200%;
   margin-bottom: 10px;
   text-align: center;
   color: white; }
@@ -164,14 +165,41 @@ table {
   #prefix_dialog p {
     margin: 0 0 10px 0; }
 
+.float_left {
+  float: left; }
+
+.float_right {
+  float: right; }
+
 #custom_roster_form_container {
-  width: 400px;
   margin-left: auto;
-  margin-right: auto; }
-  #custom_roster_form_container form {
+  margin-right: auto;
+  text-align: left;
+  width: 500px; }
+  #custom_roster_form_container form p {
+    margin: 0;
+    padding: 0;
+    font-size: 150%; }
+  #custom_roster_form_container form p.description {
+    text-align: right;
+    color: #a2a2a2;
+    font-size: 90%; }
+  #custom_roster_form_container form #team_name_label {
+    position: relative;
+    top: 10px; }
+  #custom_roster_form_container form #csv_area_label {
+    position: relative;
+    top: 30px; }
+  #custom_roster_form_container form #custom_team_name, #custom_roster_form_container form #csv_text_area {
+    font-size: 110%;
+    -moz-box-shadow: 0 5px 20px black;
+    -webkit-box-shadow: 0 5px 20px black;
+    box-shadow: 0 5px 20px black;
+    border: 10px solid #231f20;
+    margin: 5px 0 25px 0;
     width: 100%; }
-    #custom_roster_form_container form #custom_team_name {
-      width: 100%; }
-    #custom_roster_form_container form #csv_text_area {
-      width: 100%;
-      height: 200px; }
+  #custom_roster_form_container form #custom_team_name {
+    text-align: center;
+    height: 30px; }
+  #custom_roster_form_container form #csv_text_area {
+    height: 200px; }
