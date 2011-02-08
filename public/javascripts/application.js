@@ -1,7 +1,7 @@
 function init_prefix_dialog(){
   $('#prefix_dialog').dialog({
-    width: 500,
-    height: 250,
+    width: 400,
+    height: 220,
     autoOpen: false,
     modal: true,
     draggable: false,
