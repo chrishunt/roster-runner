@@ -14,6 +14,25 @@ class Player < ActiveRecord::Base
       i = 1
       positions.each do |p|
         case sport
+        when "basketball"
+          case p
+          when "SG"
+            ret << "shooting guard"
+          when "PG"
+            ret << "point guard"
+          when "PF"
+            ret << "point forward"
+          when "C"
+            ret << "center"
+          when "F"
+            ret << "forward"
+          when "SF"
+            ret << "small forward"
+          when "G"
+            ret << "guard"
+          else
+            ret << p
+          end
         when "soccer"
           case p
           when "M"
