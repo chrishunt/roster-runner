@@ -64,7 +64,9 @@ class TeamsController < ApplicationController
     if !(@csv.nil? || @csv == "" || @team_name.nil? || @team_name == "")
       @team = Team.new_custom(@team_name)
       @team.scrape_roster(@csv)
+      @league = @team.league
       redirect_to @team
+    else
     end
   end
 end

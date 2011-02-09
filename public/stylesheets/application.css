@@ -180,10 +180,12 @@ table {
     margin: 0;
     padding: 0;
     font-size: 150%; }
-  #custom_roster_form_container form p.description {
+  #custom_roster_form_container form .description {
     text-align: right;
     color: #a2a2a2;
     font-size: 90%; }
+  #custom_roster_form_container form .italic {
+    font-style: italic; }
   #custom_roster_form_container form #team_name_label {
     position: relative;
     top: 10px; }

@@ -6,17 +6,17 @@
     #team_name_label.float_left
       %p= "Team Name"
     .float_right
-      %p.description= "Example:"
-      %p.description= "Seattle Warriors"
+      %p.description.italic= "Example:"
+      %p.description= "Kitsap Hoopsters"
     .clear
     = text_field_tag :custom_team_name, @team_name
 
     #csv_area_label.float_left
       %p= "CSV Team Roster"
     .float_right
-      %p.description= "Example:"
-      %p.description= "2,QB,Richard,Bartel"
-      %p.description= "11,WR,Brandon,LaFell"
+      %p.description.italic= "Example:"
+      %p.description= "8,SG,Kobe,Bryant"
+      %p.description= "12,QB,Aaron,Rodgers"
     .clear
     = text_area_tag :csv_text_area, @csv
 

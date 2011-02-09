@@ -1,6 +1,17 @@
+# Create CUSTOM sport for custom rosters
+sport = Sport.new
+sport.name = "Custom"
+sport.save
+
+# Create Basball sport
+sport = Sport.new
+sport.name = "Baseball"
+sport.save
+
 # Build MLB league
 league = League.new
 league.is_custom = false
+league.sport = sport
 league.short_name = "MLB"
 league.name = "Major League Baseball"
 league.save
@@ -17,9 +28,15 @@ league.teams.each do |team|
   team.scrape_roster
 end
 
+# Create Soccer sport
+sport = Sport.new
+sport.name = "Soccer"
+sport.save
+
 # Build MLS league
 league = League.new
 league.is_custom = false
+league.sport = sport
 league.short_name = "MLS"
 league.name = "Major League Soccer"
 league.save
@@ -126,9 +143,15 @@ league.teams.each do |team|
   team.scrape_roster
 end
 
+# Create Basketball sport
+sport = Sport.new
+sport.name = "Basketball"
+sport.save
+
 # Build NBA league
 league = League.new
 league.is_custom = false
+league.sport = sport
 league.short_name = "NBA"
 league.name = "National Basketball Association"
 league.save
@@ -145,9 +168,15 @@ league.teams.each do |team|
   team.scrape_roster
 end
 
+# Create Football sport
+sport = Sport.new
+sport.name = "Football"
+sport.save
+
 # Build NFL league
 league = League.new
 league.is_custom = false
+league.sport = sport
 league.short_name = "NFL"
 league.name = "National Football League"
 league.save

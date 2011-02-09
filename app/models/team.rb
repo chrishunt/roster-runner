@@ -4,12 +4,13 @@ class Team < ActiveRecord::Base
   has_many :players, :order => :number, :dependent => :destroy
   belongs_to :league
 
-
   def self.new_custom(team_name)
+    sport = Sport.where('name LIKE ?', 'Custom').first
     league = League.new
     league.is_custom = true
+    league.sport = sport
     league.name = "Custom League"
-    league.short_name = "CSV"
+    league.short_name = "CUSTOM"
     league.save
     team = Team.new
     team.is_custom = true
@@ -115,7 +116,7 @@ class Team < ActiveRecord::Base
           league_name == "NBA" ||
           league_name == "MLB"
       scrape_espn_roster
-    elsif league_name == "CSV" && !csv.nil?
+    elsif league_name == "CUSTOM" && !csv.nil?
       scrape_csv_roster(csv)
     end
   end
