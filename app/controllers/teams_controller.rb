@@ -62,17 +62,28 @@ class TeamsController < ApplicationController
     team_id = params[:team_id]
     @csv = params[:csv_text_area]
     @team_name = params[:custom_team_name]
-    # If we are customizing an existing team
     if !team_id.nil?
+      # We are customizing an existing team
       team = Team.find(team_id)
       @csv = team.to_csv
       @team_name = team.name
-    elsif !(@csv.nil? || @csv == "" || @team_name.nil? || @team_name == "")
+    elsif @csv.nil? || @team_name.nil?
+      # We have not submitted the form yet
+    elsif @team_name == "" && @csv == ""
+      # Form was submitted, but missing all data
+      flash[:error] = "Team name and team roster cannot be empty."
+    elsif @team_name == ""
+      # Form was submitted, but missing team name
+      flash[:error] = "Team name cannot be empty."
+    elsif @csv == ""
+      # Form was submitted, but missing team roster
+      flash[:error] = "Team roster cannot be empty."
+    else
+      # We have all our data, lets create a custom team
       @team = Team.new_custom(@team_name)
       @team.scrape_roster(@csv)
       @league = @team.league
       redirect_to @team
-    else
     end
   end
 end

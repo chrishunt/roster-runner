@@ -60,6 +60,7 @@ h1 {
 #flash_notice,
 #flash_error,
 #flash_alert {
+  border: 1px solid black;
   padding: 5px 8px;
   margin: 10px 0; }
 
@@ -69,8 +70,8 @@ h1 {
 
 #flash_error,
 #flash_alert {
-  background-color: #ffcccc;
-  border: solid 1px #cc6666; }
+  color: white;
+  background-color: #e16003; }
 
 .fieldWithErrors {
   display: inline; }
