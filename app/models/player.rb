@@ -8,57 +8,82 @@ class Player < ActiveRecord::Base
     end
 
     def position_expanded
+      ret = ""
       sport = team.league.sport.name.downcase
-      case sport
-      when "football"
-        case position.upcase
-        when "QB"
-          "quarterback"
-        when "RB"
-          "running back"
-        when "FB"
-          "fullback"
-        when "DB"
-          "defensive back"
-        when "WR"
-          "wide receiver"
-        when "TE"
-          "tight end"
-        when "C"
-          "center"
-        when "G"
-          "guard"
-        when "OT"
-          "offensive tackle"
-        when "DE"
-          "defensive end"
-        when "DT"
-          "defensive tackle"
-        when "LB"
-          "linebacker"
-        when "CB"
-          "cornerback"
-        when "S"
-          "safety"
-        when "PK"
-          "placekicker"
-        when "P"
-          "punter"
-        when "K"
-          "kicker"
-        when "DL"
-          "defensive line"
-        when "OL"
-          "offensive line"
-        when "NT"
-          "nose tackle"
-        when "LS"
-          "long snapper"
+      positions = position.split("/")
+      i = 1
+      positions.each do |p|
+        case sport
+        when "soccer"
+          case p
+          when "M"
+            ret << "midfielder"
+          when "D"
+            ret << "defender"
+          when "GK"
+            ret << "goalkeeper"
+          when "G"
+            ret << "goalkeeper"
+          when "F"
+            ret << "forward"
+          else
+            ret << p
+          end
+        when "football"
+          case p
+          when "QB"
+            ret << "quarterback"
+          when "RB"
+            ret << "running back"
+          when "FB"
+            ret << "fullback"
+          when "DB"
+            ret << "defensive back"
+          when "WR"
+            ret << "wide receiver"
+          when "TE"
+            ret << "tight end"
+          when "C"
+            ret << "center"
+          when "G"
+            ret << "guard"
+          when "OT"
+            ret << "offensive tackle"
+          when "DE"
+            ret << "defensive end"
+          when "DT"
+            ret << "defensive tackle"
+          when "LB"
+            ret << "linebacker"
+          when "CB"
+            ret << "cornerback"
+          when "S"
+            ret << "safety"
+          when "PK"
+            ret << "placekicker"
+          when "P"
+            ret << "punter"
+          when "K"
+            ret << "kicker"
+          when "DL"
+            ret << "defensive line"
+          when "OL"
+            ret << "offensive line"
+          when "NT"
+            ret << "nose tackle"
+          when "LS"
+            ret << "long snapper"
+          else
+            ret << p
+          end
         else
-          position
+          ret << p
         end
-      else
-        position
+        if positions.size > 1 && i < positions.size
+          ret << "/"
+        end
+        i = i + 1
       end
+      return ret
     end
 end
