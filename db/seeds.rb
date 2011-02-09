@@ -138,6 +138,21 @@ sport = Sport.new
 sport.name = "Basketball"
 sport.save
 
+# Build NCAA BB league
+league = League.new
+league.is_custom = false
+league.sport = sport
+league.short_name = "NCAA BB"
+league.name = "NCAA Basketball"
+league.save
+
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "Washington Huskies"
+team.uri = "http://espn.go.com/mens-college-basketball/team/roster/_/id/264/washington-huskies"
+team.save
+
 # Build NBA league
 league = League.new
 league.is_custom = false
@@ -157,6 +172,27 @@ team.save
 sport = Sport.new
 sport.name = "Football"
 sport.save
+
+# Build NCAA FB league
+league = League.new
+league.is_custom = false
+league.sport = sport
+league.short_name = "NCAA FB"
+league.name = "NCAA Football"
+league.save
+
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "Boston College Eagles"
+team.uri = "http://espn.go.com/college-football/team/roster/_/id/103/boston-college-eagles"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "Washington Huskies"
+team.uri = "http://espn.go.com/college-football/team/roster/_/id/264/washington-huskies"
+team.save
 
 # Build NFL league
 league = League.new

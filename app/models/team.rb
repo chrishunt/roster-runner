@@ -114,6 +114,8 @@ class Team < ActiveRecord::Base
       scrape_mls_roster
     elsif league_name == "NFL" ||
           league_name == "NBA" ||
+          league_name == "NCAA FB" ||
+          league_name == "NCAA BB" ||
           league_name == "MLB"
       scrape_espn_roster
     elsif league_name == "CUSTOM" && !csv.nil?
