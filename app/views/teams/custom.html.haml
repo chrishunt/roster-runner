@@ -12,7 +12,7 @@
     = text_field_tag :custom_team_name, @team_name
 
     #csv_area_label.float_left
-      %p= "CSV Team Roster"
+      %p= "Team Roster"
     .float_right
       %p.description.italic= "Example:"
       %p.description= "8,SG,Kobe,Bryant"
@@ -21,4 +21,4 @@
     = text_area_tag :csv_text_area, @csv
 
     %br
-    = submit_tag "Create Roster"
+    = submit_tag "Create Roster", :id => "custom_submit_button"
