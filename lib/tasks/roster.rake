@@ -15,7 +15,8 @@ namespace :roster do
   namespace :destroy do
     desc "Destroy custom teams older than 24 hours"
     task :custom => :environment do
-      leagues = League.where("is_custom = ?", true)
+      yesterday = Time.new - 1.day
+      leagues = League.where("is_custom = ? AND created_at < ?", true, yesterday)
       puts "#{leagues.size} leagues are going to be destroyed..."
       i = 1
       leagues.each do |league|
