@@ -15,22 +15,22 @@ namespace :roster do
 
     desc "Scrape basketball rosters for non-custom teams"
     task :basketball => :environment do
-      scrape_sport("basketball")
+      scrape_sport("Basketball")
     end
 
     desc "Scrape football rosters for non-custom teams"
     task :football => :environment do
-      scrape_sport("football")
+      scrape_sport("Football")
     end
 
     desc "Scrape baseball rosters for non-custom teams"
     task :baseball => :environment do
-      scrape_sport("baseball")
+      scrape_sport("Baseball")
     end
 
     desc "Scrape soccer rosters for non-custom teams"
     task :soccer => :environment do
-      scrape_sport("soccer")
+      scrape_sport("Soccer")
     end
 
     def scrape_sport(sport)
