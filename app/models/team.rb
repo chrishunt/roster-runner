@@ -222,6 +222,5 @@ class Team < ActiveRecord::Base
     end
     return csv
   end
-
 end
 
