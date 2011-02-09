@@ -167,6 +167,24 @@ team.league = league
 team.name = "Boston Celtics"
 team.uri = "http://espn.go.com/nba/team/roster/_/name/bos/boston-celtics"
 team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "New Jersey Nets"
+team.uri = "http://espn.go.com/nba/team/roster/_/name/nj/new-jersey-nets"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "New York Knicks"
+team.uri = "http://espn.go.com/nba/team/roster/_/name/ny/new-york-knicks"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "Philadelphia 76ers"
+team.uri = "http://espn.go.com/nba/team/roster/_/name/phi/philadelphia-76ers"
+team.save
 
 # Create Football sport
 sport = Sport.new
