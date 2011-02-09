@@ -14,6 +14,31 @@ class Player < ActiveRecord::Base
       i = 1
       positions.each do |p|
         case sport
+        when "baseball"
+          case p
+          when "1B"
+            ret << "first baseman"
+          when "2B"
+            ret << "second baseman"
+          when "3B"
+            ret << "third baseman"
+          when "SP"
+            ret << "setup pitcher"
+          when "SS"
+            ret << "shortstop"
+          when "C"
+            ret << "catcher"
+          when "CF"
+            ret << "center fielder"
+          when "LF"
+            ret << "left fielder"
+          when "RP"
+            ret << "relief pitcher"
+          when "RF"
+            ret << "right fielder"
+          else
+            ret << p 
+          end
         when "basketball"
           case p
           when "SG"

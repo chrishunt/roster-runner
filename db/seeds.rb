@@ -22,6 +22,24 @@ team.league = league
 team.name = "Baltimore Orioles"
 team.uri = "http://espn.go.com/mlb/team/roster/_/name/bal/baltimore-orioles"
 team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "Boston Red Sox"
+team.uri = "http://espn.go.com/mlb/team/roster/_/name/bos/boston-red-sox"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "New York Yankees"
+team.uri = "http://espn.go.com/mlb/team/roster/_/name/nyy/new-york-yankees"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "Tampa Bay Rays"
+team.uri = "http://espn.go.com/mlb/team/roster/_/name/tb/tampa-bay-rays"
+team.save
 
 # Create Soccer sport
 sport = Sport.new
