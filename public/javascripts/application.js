@@ -1,3 +1,7 @@
+function init_submit_buttons(){
+  $('#custom_submit_button').button();
+}
+
 function init_download_dialog(){
   $('#download_dialog').dialog({
     width: 400,
@@ -35,5 +39,6 @@ function init_download_dialog(){
 
 $(document).ready(function() {
   init_download_dialog();
+  init_submit_buttons();
 });
 
