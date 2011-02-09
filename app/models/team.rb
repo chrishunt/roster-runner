@@ -141,10 +141,10 @@ class Team < ActiveRecord::Base
       player = Player.new
       player.is_custom = false
       player.team_id = id
-      player.number = p[:number]
-      player.position = p[:position]
-      player.first_name = p[:name].split[0]
-      player.last_name = p[:name].split[1..(p[:name].size)].join(" ")
+      player.number = p[:number].to_s.strip
+      player.position = p[:position].to_s.strip
+      player.first_name = p[:name].split[0].to_s.strip
+      player.last_name = p[:name].split[1..(p[:name].size)].join(" ").to_s.strip
       player.save
     end
   end
@@ -171,16 +171,16 @@ class Team < ActiveRecord::Base
       # skip this row if we're missing data
       next if p[0].nil? || p[1].nil? || p[2].nil?
 
-      number = p[0]
+      number = p[0].to_s.strip
       number = nil if number == ""
 
-      full_name = p[1]
-      first_name = full_name.split[0]
+      full_name = p[1].to_s.strip
+      first_name = full_name.split[0].to_s.strip
       first_name = nil if first_name == ""
-      last_name = full_name.split[1..(full_name.split.size - 1)].join(" ")
+      last_name = full_name.split[1..(full_name.split.size - 1)].join(" ").to_s.strip
       last_name = nil if last_name == ""
 
-      position = p[2]
+      position = p[2].to_s.strip
       position = nil if position == ""
       
       # skip this row if our data was not as expected
@@ -206,10 +206,10 @@ class Team < ActiveRecord::Base
       player = Player.new
       player.is_custom = true
       player.team_id = id
-      player.number = r[:number]
-      player.position = r[:position]
-      player.first_name = r[:first_name]
-      player.last_name = r[:last_name]
+      player.number = r[:number].to_s.strip
+      player.position = r[:position].to_s.strip
+      player.first_name = r[:first_name].to_s.strip
+      player.last_name = r[:last_name].to_s.strip
       player.save
     end
   end
