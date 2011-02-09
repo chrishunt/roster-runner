@@ -2,8 +2,9 @@
 %h1= link_to @team.name, @team.league
 
 
-#code_links
-  = render :partial => 'code_links', :locals => {:team => @team}
+#team_button_container
+  = render :partial => 'download_link', :locals => {:team => @team}
+  = render :partial => 'customize_link', :locals => {:team => @team}
 
 %table
   %tr

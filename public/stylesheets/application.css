@@ -96,20 +96,22 @@ h1 {
   .error_messages ul {
     margin: 0; }
 
-#code_links {
+#team_button_container {
   padding: 10px 0;
   margin-bottom: 10px; }
 
-.code_link {
+.button {
   -moz-box-shadow: 2px 2px 5px black;
   -webkit-box-shadow: 2px 2px 5px black;
   box-shadow: 2px 2px 5px black;
   text-decoration: none;
+  font-size: 85%;
   text-transform: uppercase;
-  padding: 5px 10px;
+  padding: 5px 15px;
+  margin: 0 2px;
   color: white;
   background-color: #231f20; }
-  .code_link:hover {
+  .button:hover {
     background-color: #363636; }
 
 table {
@@ -123,7 +125,7 @@ table {
   border-collapse: collapse;
   border: 15px solid #231f20;
   margin-top: 20px; }
-  table .code_link {
+  table .button {
     color: #231f20;
     background-color: #d2d2d2; }
   table a {
@@ -136,7 +138,7 @@ table {
     background-color: #d2d2d2; }
     table tr:hover a {
       color: #363636; }
-    table tr:hover .code_link {
+    table tr:hover .button {
       background-color: #a2a2a2; }
   table tr th, table tr td {
     padding: 15px 20px; }
@@ -158,11 +160,11 @@ table {
   padding: 15px;
   float: left; }
 
-#prefix_dialog {
+#download_dialog {
   display: none; }
-  #prefix_dialog input {
+  #download_dialog input {
     width: 95%; }
-  #prefix_dialog p {
+  #download_dialog p {
     margin: 0 0 10px 0; }
 
 .float_left {

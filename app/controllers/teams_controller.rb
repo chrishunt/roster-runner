@@ -59,9 +59,15 @@ class TeamsController < ApplicationController
   end
 
   def custom
+    team_id = params[:team_id]
     @csv = params[:csv_text_area]
     @team_name = params[:custom_team_name]
-    if !(@csv.nil? || @csv == "" || @team_name.nil? || @team_name == "")
+    # If we are customizing an existing team
+    if !team_id.nil?
+      team = Team.find(team_id)
+      @csv = team.to_csv
+      @team_name = team.name
+    elsif !(@csv.nil? || @csv == "" || @team_name.nil? || @team_name == "")
       @team = Team.new_custom(@team_name)
       @team.scrape_roster(@csv)
       @league = @team.league

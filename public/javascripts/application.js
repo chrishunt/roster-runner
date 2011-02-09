@@ -1,5 +1,5 @@
-function init_prefix_dialog(){
-  $('#prefix_dialog').dialog({
+function init_download_dialog(){
+  $('#download_dialog').dialog({
     width: 400,
     height: 210,
     autoOpen: false,
@@ -11,29 +11,29 @@ function init_prefix_dialog(){
         $(this).dialog('close');
       },
       "Download": function(){
-        var prefix = $('#prefix_dialog_input').val();
-        var id = $('#prefix_dialog_team_id').val();
-        var form = $('#prefix_dialog_form').val();
-        var url = "/teams/" + id + "/code?prefix=" + prefix + "&form=" + form;
+        var prefix = $('#download_dialog_prefix').val();
+        var team_id = $('#download_dialog_team_id').val();
+        var form = $('#download_dialog_form').val();
+        var url = "/teams/" + team_id + "/code?prefix=" + prefix + "&form=" + form;
         window.location.href = url;
         $(this).dialog('close');
       }
     }
   });
-  $('.code_link').click(function(e){
+  $('.download_link').click(function(e){
     e.preventDefault();
     var split = $(this).attr('id').split('_');
-    var id = split[split.length-3]
-    var prefix = split[split.length-2]
-    var form = split[split.length-1]
-    $('#prefix_dialog_input').val(prefix);
-    $('#prefix_dialog_team_id').val(id);
-    $('#prefix_dialog_form').val(form);
-    $('#prefix_dialog').dialog('open');
+    var team_id = split[split.length-2]
+    var prefix = split[split.length-1]
+    var form = "pm";
+    $('#download_dialog_prefix').val(prefix);
+    $('#download_dialog_team_id').val(team_id);
+    $('#download_dialog_form').val(form);
+    $('#download_dialog').dialog('open');
   });
 }
 
 $(document).ready(function() {
-  init_prefix_dialog();
+  init_download_dialog();
 });
 

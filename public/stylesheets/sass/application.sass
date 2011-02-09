@@ -118,17 +118,19 @@ h1
   ul
     margin: 0
 
-#code_links
+#team_button_container
   padding: 10px 0
   margin-bottom: 10px
 
-.code_link
+.button
   -moz-box-shadow: 2px 2px 5px $black
   -webkit-box-shadow: 2px 2px 5px $black
   box-shadow: 2px 2px 5px $black
   text-decoration: none
+  font-size: 85%
   text-transform: uppercase
-  padding: 5px 10px
+  padding: 5px 15px
+  margin: 0 2px
   color: $white
   background-color: $darker_grey
   &:hover
@@ -145,7 +147,7 @@ table
   border-collapse: collapse
   border: 15px solid $darker_grey
   margin-top: 20px
-  .code_link
+  .button
     color: $darker_grey
     background-color: $lighter_grey
   a
@@ -159,7 +161,7 @@ table
       background-color: $lighter_grey
       a
         color: $dark_grey
-      .code_link
+      .button
         background-color: $light_grey
     th, td
       padding: 15px 20px
@@ -182,7 +184,7 @@ table
     padding: 15px
     float: left
 
-#prefix_dialog
+#download_dialog
   display: none
   input
     width: 95%
