@@ -72,16 +72,16 @@ class Team < ActiveRecord::Base
           end
         end
         # save expansion each player
-        expansions[:sea1] << "#{p.team.name} #{p.position} #{p.name} (#{p.number})"
+        expansions[:sea1] << "#{p.team.name} #{p.position_expanded} #{p.name} (#{p.number})"
         expansions[:sea1f] << "#{p.first_name}"
         expansions[:sea1l] << "#{p.last_name}"
-        expansions[:sea1p] << "#{p.position} #{p.name}"
+        expansions[:sea1p] << "#{p.position_expanded} #{p.name}"
         expansions[:sea1t] << "#{p.team.name}'s #{p.name}"
         expansions[:sea1n] << "#{p.name} (#{p.number})"
-        expansions[:sea1tp] << "#{p.team.name} #{p.position} #{p.name}"
+        expansions[:sea1tp] << "#{p.team.name} #{p.position_expanded} #{p.name}"
         expansions[:sea1tn] << "#{p.team.name} #{p.name} (#{p.number})"
-        expansions[:sea1pn] << "#{p.position} #{p.name} (#{p.number})"
-        expansions[:sea1tpn] << "#{p.team.name} #{p.position} #{p.name} (#{p.number})"
+        expansions[:sea1pn] << "#{p.position_expanded} #{p.name} (#{p.number})"
+        expansions[:sea1tpn] << "#{p.team.name} #{p.position_expanded} #{p.name} (#{p.number})"
         expansions[:sea1s] << "[#{p.last_name},#{p.first_name}],"
         # append duplicate tag if multiple players have this number
         if group.size > 1
