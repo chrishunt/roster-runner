@@ -23,10 +23,10 @@ team.name = "Baltimore Orioles"
 team.uri = "http://espn.go.com/mlb/team/roster/_/name/bal/baltimore-orioles"
 team.save
 
-# Build rosters for MLB teams
-league.teams.each do |team|
-  team.scrape_roster
-end
+## Build rosters for MLB teams
+#league.teams.each do |team|
+#  team.scrape_roster
+#end
 
 # Create Soccer sport
 sport = Sport.new
@@ -138,10 +138,10 @@ team.name = "Toronto FC"
 team.uri = "http://www.mlssoccer.com/players/toronto-fc"
 team.save
 
-# Build rosters for MLS teams
-league.teams.each do |team|
-  team.scrape_roster
-end
+## Build rosters for MLS teams
+#league.teams.each do |team|
+#  team.scrape_roster
+#end
 
 # Create Basketball sport
 sport = Sport.new
@@ -163,10 +163,10 @@ team.name = "Boston Celtics"
 team.uri = "http://espn.go.com/nba/team/roster/_/name/bos/boston-celtics"
 team.save
 
-# Build rosters for NBA teams
-league.teams.each do |team|
-  team.scrape_roster
-end
+## Build rosters for NBA teams
+#league.teams.each do |team|
+#  team.scrape_roster
+#end
 
 # Create Football sport
 sport = Sport.new
@@ -374,8 +374,8 @@ team.name = "Washington Redskins"
 team.uri = "http://espn.go.com/nfl/team/roster/_/name/wsh/washington-redskins"
 team.save
 
-# Build rosters for NFL teams
-league.teams.each do |team|
-  team.scrape_roster
-end
+## Build rosters for NFL teams
+#league.teams.each do |team|
+#  team.scrape_roster
+#end
 
