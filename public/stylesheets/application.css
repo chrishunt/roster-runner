@@ -104,6 +104,7 @@ h1 {
   -moz-box-shadow: 2px 2px 5px black;
   -webkit-box-shadow: 2px 2px 5px black;
   box-shadow: 2px 2px 5px black;
+  border: none;
   text-decoration: none;
   font-size: 85%;
   text-transform: uppercase;
@@ -207,3 +208,5 @@ table {
     height: 30px; }
   #custom_roster_form_container form #csv_text_area {
     height: 200px; }
+  #custom_roster_form_container form #custom_submit_button {
+    padding: 7px 17px; }
