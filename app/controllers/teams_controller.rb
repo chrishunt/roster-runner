@@ -6,6 +6,8 @@ class TeamsController < ApplicationController
   end
 
   def show
+    # Cache results for one month 
+    response.headers['Cache-Control'] = 'public, max-age=2592000'
     @team = Team.find(params[:id])
     @league = @team.league
   end

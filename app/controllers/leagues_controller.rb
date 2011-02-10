@@ -1,13 +1,12 @@
 class LeaguesController < ApplicationController
-  before_filter :redirect_to_root, :except => [:index, :show]
+  before_filter :redirect_to_root, :except => [:show]
 
   def index
-    redirect_to @leagues.first
   end
 
   def show
-    # Cache results for an hour
-    response.headers['Cache-Control'] = 'public, max-age=3600'
+    # Cache results for one month 
+    response.headers['Cache-Control'] = 'public, max-age=2592000'
     @league = League.find(params[:id])
   end
 
