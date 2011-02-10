@@ -59,6 +59,8 @@ class TeamsController < ApplicationController
   end
 
   def custom
+    @time = Time.new
+    response.headers['Cache-Control'] = 'public, max-age=10'
     team_id = params[:team_id]
     @csv = params[:csv_text_area]
     @team_name = params[:custom_team_name]
