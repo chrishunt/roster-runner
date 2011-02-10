@@ -100,9 +100,10 @@ class TeamsController < ApplicationController
       @league.short_name = "CUSTOM"
       @league.save
       @team = Team.new
-      @team.is_custom = true
-      @team.name = @team_name
       @team.league = @league
+      @team.is_custom = true
+      @team.gender = "male"
+      @team.name = @team_name
       @team.uri = "http://rosterrunner.com"
       @team.save
       @team.scrape_roster(@csv)

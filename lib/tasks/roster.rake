@@ -9,7 +9,7 @@ namespace :roster do
         team.scrape_roster
         team = Team.find(team.id)
         player_count = team.players.size
-        puts "(#{i}/#{teams.size}) #{team.league.short_name}: #{team.name} (#{player_count} players)"
+        puts "(#{i}/#{teams.size}) #{team.league.short_name} (#{team.gender}): #{team.name} (#{player_count} players)"
         puts "***** WARNING!! EMPTY TEAM ROSTER! (ID: #{team.id})" if player_count == 0
         i = i + 1
       end
@@ -44,7 +44,7 @@ namespace :roster do
             team.scrape_roster 
             team = Team.find(team.id)
             player_count = team.players.size
-            puts "#{team.league.short_name}: #{team.name} (#{player_count} players)"
+            puts "#{team.league.short_name} (#{team.gender}): #{team.name} (#{player_count} players)"
             puts "***** WARNING!! EMPTY TEAM ROSTER! (ID: #{team.id})" if player_count == 0
           end
         end

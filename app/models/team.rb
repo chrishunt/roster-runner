@@ -1,6 +1,6 @@
 class Team < ActiveRecord::Base
   attr_accessible :name
-  validates_presence_of :name, :league, :uri
+  validates_presence_of :name, :league, :uri, :gender
   has_many :players, :order => :number, :dependent => :destroy
   belongs_to :league
 

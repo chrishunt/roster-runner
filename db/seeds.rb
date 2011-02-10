@@ -78,6 +78,9 @@ build_league("NCAA BB", "NCAA Basketball", sport, teams)
 # NBA LEAGUE
 ################
 teams = [
+  ##########
+  # MEN
+  ##########
   {
     :name => "Boston Celtics",
     :url => "http://espn.go.com/nba/team/roster/_/name/bos/boston-celtics"
@@ -93,6 +96,29 @@ teams = [
   {
     :name => "Philadelphia 76ers",
     :url => "http://espn.go.com/nba/team/roster/_/name/phi/philadelphia-76ers"
+  },
+  ##########
+  # WOMEN
+  ##########
+  {
+    :name => "Atlanta Dream",
+    :url => "http://espn.go.com/wnba/team/roster/_/name/atl/atlanta-dream",
+    :gender => "female"
+  },
+  {
+    :name => "Chicago Sky",
+    :url => "http://espn.go.com/wnba/team/roster/_/name/chi/chicago-sky",
+    :gender => "female"
+  },
+  {
+    :name => "Connecticut Sun",
+    :url => "http://espn.go.com/wnba/team/roster/_/name/ct/connecticut-sun",
+    :gender => "female"
+  },
+  {
+    :name => "Indiana Fever",
+    :url => "http://espn.go.com/wnba/team/roster/_/name/ind/indiana-fever",
+    :gender => "female"
   }
 ]
 build_league("NBA", "National Basketball Association", sport, teams)
