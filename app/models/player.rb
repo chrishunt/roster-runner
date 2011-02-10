@@ -11,6 +11,7 @@ class Player < ActiveRecord::Base
       ret = ""
       sport = team.league.sport.name.downcase
       positions = position.split("/")
+      positions = position.split("-") if positions.size == 1
       i = 1
       positions.each do |p|
         case sport

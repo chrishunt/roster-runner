@@ -47,8 +47,10 @@ class League < ActiveRecord::Base
     divisions = scraper.scrape(URI.parse(uri))
     divisions.each do |division|
       division.each do |t|
+        espn_home = "http://espn.go.com"
+        roster_link_id = short_name.upcase.include?("NCAA") ? 3 : 5
+        team_uri = "#{espn_home}#{t.links[roster_link_id]}"
         team_name = t.name
-        team_uri = "http://espn.go.com#{t.links[5]}"
         team = Team.new 
         team.league_id = id
         team.is_custom = false

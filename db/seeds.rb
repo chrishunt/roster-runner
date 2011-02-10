@@ -29,74 +29,30 @@ build_league("MLB",
              "Major League Baseball",
              "http://espn.go.com/mlb/teams",
              sport)
-#
-#########################################
-## BASKETBALL SPORT
-#########################################
-#sport = Sport.new
-#sport.name = "Basketball"
-#sport.save
-#
+
+########################################
+# BASKETBALL SPORT
+########################################
+sport = Sport.new
+sport.name = "Basketball"
+sport.save
+
 #################
 ## NCAA BB LEAGUE
 #################
-#teams = [
-#  {
-#    :name => "Washington Huskies",
-#    :url => "http://espn.go.com/mens-college-basketball/team/roster/_/id/264/washington-huskies"
-#  }
-#]
-#build_league("NCAA BB", "NCAA Basketball", sport, teams)
-#
+build_league("NCAA BB", 
+             "NCAA Basketball",
+             "http://espn.go.com/mens-college-basketball/teams",
+             sport)
+
 #################
 ## NBA LEAGUE
 #################
-#teams = [
-#  ##########
-#  # MEN
-#  ##########
-#  {
-#    :name => "Boston Celtics",
-#    :url => "http://espn.go.com/nba/team/roster/_/name/bos/boston-celtics"
-#  },
-#  {
-#    :name => "New Jersey Nets",
-#    :url => "http://espn.go.com/nba/team/roster/_/name/nj/new-jersey-nets"
-#  },
-#  {
-#    :name => "New York Knicks",
-#    :url => "http://espn.go.com/nba/team/roster/_/name/ny/new-york-knicks"
-#  },
-#  {
-#    :name => "Philadelphia 76ers",
-#    :url => "http://espn.go.com/nba/team/roster/_/name/phi/philadelphia-76ers"
-#  },
-#  ##########
-#  # WOMEN
-#  ##########
-#  {
-#    :name => "Atlanta Dream",
-#    :url => "http://espn.go.com/wnba/team/roster/_/name/atl/atlanta-dream",
-#    :gender => "female"
-#  },
-#  {
-#    :name => "Chicago Sky",
-#    :url => "http://espn.go.com/wnba/team/roster/_/name/chi/chicago-sky",
-#    :gender => "female"
-#  },
-#  {
-#    :name => "Connecticut Sun",
-#    :url => "http://espn.go.com/wnba/team/roster/_/name/ct/connecticut-sun",
-#    :gender => "female"
-#  },
-#  {
-#    :name => "Indiana Fever",
-#    :url => "http://espn.go.com/wnba/team/roster/_/name/ind/indiana-fever",
-#    :gender => "female"
-#  }
-#]
-#build_league("NBA", "National Basketball Association", sport, teams)
-#
+build_league("NBA", 
+             "National Basketball Association",
+             "http://espn.go.com/nba/teams",
+             sport)
+
 #########################################
 ## FOOTBALL SPORT
 #########################################
