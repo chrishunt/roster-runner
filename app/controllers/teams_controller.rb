@@ -6,8 +6,8 @@ class TeamsController < ApplicationController
   end
 
   def show
-    # Cache results for one month 
-    response.headers['Cache-Control'] = 'public, max-age=2592000'
+    # Cache results for 5 minutes
+    response.headers['Cache-Control'] = 'public, max-age=300'
     @team = Team.find(params[:id])
     @league = @team.league
   end
@@ -54,8 +54,8 @@ class TeamsController < ApplicationController
       if prefix.nil? || prefix == ""
         prefix = @team.prefix
       end
-      # Cache results for one month 
-      response.headers['Cache-Control'] = 'public, max-age=2592000'
+      # Cache results for 5 minutes
+      response.headers['Cache-Control'] = 'public, max-age=300'
       # Prompt download
       response.headers['Content-Type'] = 'text/plain'
       response.headers['Content-Disposition'] = "attachment; filename=#{@team.filename}"
