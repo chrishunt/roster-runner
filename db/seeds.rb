@@ -41,116 +41,6 @@ team.name = "Tampa Bay Rays"
 team.uri = "http://espn.go.com/mlb/team/roster/_/name/tb/tampa-bay-rays"
 team.save
 
-# Create Soccer sport
-sport = Sport.new
-sport.name = "Soccer"
-sport.save
-
-# Build MLS league
-league = League.new
-league.is_custom = false
-league.sport = sport
-league.short_name = "MLS"
-league.name = "Major League Soccer"
-league.save
-
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Chicago Fire"
-team.uri = "http://www.mlssoccer.com/players/chicago-fire"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Chivas USA"
-team.uri = "http://www.mlssoccer.com/players/chivas-usa"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Colorado Rapids"
-team.uri = "http://www.mlssoccer.com/players/colorado-rapids"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Columbus Crew"
-team.uri = "http://www.mlssoccer.com/players/columbus-crew"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "D.C. United"
-team.uri = "http://www.mlssoccer.com/players/dc-united"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "FC Dallas"
-team.uri = "http://www.mlssoccer.com/players/fc-dallas"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Houston Dynamo"
-team.uri = "http://www.mlssoccer.com/players/houston-dynamo"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Sporting Kansas City"
-team.uri = "http://www.mlssoccer.com/players/sporting-kansas-city"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Los Angeles Galaxy"
-team.uri = "http://www.mlssoccer.com/players/los-angeles-galaxy"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "New England Revolution"
-team.uri = "http://www.mlssoccer.com/players/new-england-revolution"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "New York Red Bulls"
-team.uri = "http://www.mlssoccer.com/players/new-york-red-bulls"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Philadelphia Union"
-team.uri = "http://www.mlssoccer.com/players/philadelphia-union"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Real Salt Lake"
-team.uri = "http://www.mlssoccer.com/players/real-salt-lake"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "San Jose Earthquakes"
-team.uri = "http://www.mlssoccer.com/players/san-jose-earthquakes"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Seattle Sounders FC"
-team.uri = "http://www.mlssoccer.com/players/seattle-sounders-fc"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Toronto FC"
-team.uri = "http://www.mlssoccer.com/players/toronto-fc"
-team.save
-
 # Create Basketball sport
 sport = Sport.new
 sport.name = "Basketball"
@@ -431,3 +321,112 @@ team.name = "Washington Redskins"
 team.uri = "http://espn.go.com/nfl/team/roster/_/name/wsh/washington-redskins"
 team.save
 
+# Create Soccer sport
+sport = Sport.new
+sport.name = "Soccer"
+sport.save
+
+# Build MLS league
+league = League.new
+league.is_custom = false
+league.sport = sport
+league.short_name = "MLS"
+league.name = "Major League Soccer"
+league.save
+
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "Chicago Fire"
+team.uri = "http://www.mlssoccer.com/players/chicago-fire"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "Chivas USA"
+team.uri = "http://www.mlssoccer.com/players/chivas-usa"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "Colorado Rapids"
+team.uri = "http://www.mlssoccer.com/players/colorado-rapids"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "Columbus Crew"
+team.uri = "http://www.mlssoccer.com/players/columbus-crew"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "D.C. United"
+team.uri = "http://www.mlssoccer.com/players/dc-united"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "FC Dallas"
+team.uri = "http://www.mlssoccer.com/players/fc-dallas"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "Houston Dynamo"
+team.uri = "http://www.mlssoccer.com/players/houston-dynamo"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "Sporting Kansas City"
+team.uri = "http://www.mlssoccer.com/players/sporting-kansas-city"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "Los Angeles Galaxy"
+team.uri = "http://www.mlssoccer.com/players/los-angeles-galaxy"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "New England Revolution"
+team.uri = "http://www.mlssoccer.com/players/new-england-revolution"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "New York Red Bulls"
+team.uri = "http://www.mlssoccer.com/players/new-york-red-bulls"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "Philadelphia Union"
+team.uri = "http://www.mlssoccer.com/players/philadelphia-union"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "Real Salt Lake"
+team.uri = "http://www.mlssoccer.com/players/real-salt-lake"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "San Jose Earthquakes"
+team.uri = "http://www.mlssoccer.com/players/san-jose-earthquakes"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "Seattle Sounders FC"
+team.uri = "http://www.mlssoccer.com/players/seattle-sounders-fc"
+team.save
+team = Team.new
+team.is_custom = false
+team.league = league
+team.name = "Toronto FC"
+team.uri = "http://www.mlssoccer.com/players/toronto-fc"
+team.save

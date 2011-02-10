@@ -196,18 +196,22 @@ table {
   #custom_roster_form_container form #csv_area_label {
     position: relative;
     top: 30px; }
-  #custom_roster_form_container form #custom_team_name, #custom_roster_form_container form #csv_text_area {
-    font-size: 110%;
+  #custom_roster_form_container form #sport_id_label {
+    position: relative;
+    top: 10px; }
+  #custom_roster_form_container form #custom_team_name, #custom_roster_form_container form #csv_text_area, #custom_roster_form_container form #sport_id {
     -moz-box-shadow: 0 5px 20px black;
     -webkit-box-shadow: 0 5px 20px black;
     box-shadow: 0 5px 20px black;
+    font-size: 110%;
     border: 10px solid #231f20;
     margin: 5px 0 25px 0;
     width: 100%; }
   #custom_roster_form_container form #custom_team_name {
-    text-align: center;
     height: 30px; }
   #custom_roster_form_container form #csv_text_area {
     height: 200px; }
   #custom_roster_form_container form #custom_submit_button {
     padding: 7px 17px; }
+  #custom_roster_form_container form #sport_id {
+    width: 104%; }

@@ -7,7 +7,7 @@ class TeamsController < ApplicationController
 
   def show
     # Cache results for 5 minutes
-    response.headers['Cache-Control'] = 'public, max-age=300'
+    #response.headers['Cache-Control'] = 'public, max-age=300'
     @team = Team.find(params[:id])
     @league = @team.league
   end
@@ -55,7 +55,7 @@ class TeamsController < ApplicationController
         prefix = @team.prefix
       end
       # Cache results for 5 minutes
-      response.headers['Cache-Control'] = 'public, max-age=300'
+      #response.headers['Cache-Control'] = 'public, max-age=300'
       # Prompt download
       response.headers['Content-Type'] = 'text/plain'
       response.headers['Content-Disposition'] = "attachment; filename=#{@team.filename}"
@@ -64,15 +64,23 @@ class TeamsController < ApplicationController
   end
 
   def custom
+    # Load all sports for sport select box
+    @sports = Sport.all
+    # Load data passed to form
     team_id = params[:team_id]
+    @sport = params[:sport]
+    if !@sport.nil?
+      @sport = Sport.find(@sport[:id])
+    end
     @csv = params[:csv_text_area]
     @team_name = params[:custom_team_name]
     if !team_id.nil?
       # We are customizing an existing team
       team = Team.find(team_id)
+      @sport = team.league.sport
       @csv = team.to_csv
       @team_name = team.name
-    elsif @csv.nil? || @team_name.nil?
+    elsif @csv.nil? || @team_name.nil? || @sport.nil?
       # We have not submitted the form yet
     elsif @team_name == "" && @csv == ""
       # Form was submitted, but missing all data
@@ -85,7 +93,18 @@ class TeamsController < ApplicationController
       flash[:error] = "Team roster cannot be empty."
     else
       # We have all our data, lets create a custom team
-      @team = Team.new_custom(@team_name)
+      @league = League.new
+      @league.is_custom = true
+      @league.sport = @sport
+      @league.name = "Custom League"
+      @league.short_name = "CUSTOM"
+      @league.save
+      @team = Team.new
+      @team.is_custom = true
+      @team.name = @team_name
+      @team.league = @league
+      @team.uri = "http://rosterrunner.com"
+      @team.save
       @team.scrape_roster(@csv)
       @league = @team.league
       redirect_to @team

@@ -3,6 +3,14 @@
 
 #custom_roster_form_container
   = form_tag :action => "custom" do
+
+    #sport_id_label.float_left
+      %p= "Sport Name"
+    .float_right
+      %p.description.italic= "Example:"
+      %p.description= "Basketball"
+    .clear
+    = collection_select :sport, :id, @sports, :id, :name, :options => {:prompt => false}
     #team_name_label.float_left
       %p= "Team Name"
     .float_right
@@ -19,6 +27,7 @@
       %p.description= "18,D/M,Mike,Banner"
     .clear
     = text_area_tag :csv_text_area, @csv
+
 
     %br
     = submit_tag "Create Roster", :id => "custom_submit_button", :class => "button"

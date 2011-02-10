@@ -4,23 +4,6 @@ class Team < ActiveRecord::Base
   has_many :players, :order => :number, :dependent => :destroy
   belongs_to :league
 
-  def self.new_custom(team_name)
-    sport = Sport.where('name LIKE ?', 'Custom').first
-    league = League.new
-    league.is_custom = true
-    league.sport = sport
-    league.name = "Custom League"
-    league.short_name = "CUSTOM"
-    league.save
-    team = Team.new
-    team.is_custom = true
-    team.name = team_name
-    team.league = league
-    team.uri = "http://rosterrunner.com"
-    team.save
-    return team
-  end
-
   def filename
     split = name.split
     file = "#{league.sport.name.downcase}_#{split[0].downcase}"
