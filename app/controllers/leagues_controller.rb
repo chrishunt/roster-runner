@@ -5,9 +5,11 @@ class LeaguesController < ApplicationController
   end
 
   def show
+    @gender = params[:gender].nil? ? "male" : params[:gender]
+    @league = League.find(params[:id])
+    @teams = @gender == "female" ? @league.female_teams : @league.male_teams
     # Cache results for 5 minutes
     #response.headers['Cache-Control'] = 'public, max-age=300'
-    @league = League.find(params[:id])
   end
 
   def new

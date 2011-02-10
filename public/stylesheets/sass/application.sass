@@ -59,11 +59,11 @@ h1
     display: inline
     text-transform: uppercase
     a, .selected
+      -moz-border-radius: 3px
+      -webkit-border-radius: 3px
+      border-radius: 3px
       color: $light_grey
       text-decoration: none
-      -moz-border-radius: 5px
-      -webkit-border-radius: 5px
-      border-radius: 5px
       padding: 3px 20px
       &:hover
         color: $white
@@ -119,11 +119,14 @@ h1
   ul
     margin: 0
 
-#team_button_container
+#team_button_container, #gender_button_container
   padding: 10px 0
   margin-bottom: 10px
 
 .button
+  -moz-border-radius: 3px
+  -webkit-border-radius: 3px
+  border-radius: 3px
   -moz-box-shadow: 2px 2px 5px $black
   -webkit-box-shadow: 2px 2px 5px $black
   box-shadow: 2px 2px 5px $black
@@ -136,7 +139,9 @@ h1
   color: $white
   background-color: $darker_grey
   &:hover
-    background-color: $dark_grey
+    background-color: $orange
+.button_selected
+  background-color: $orange
 
 table
   -moz-box-shadow: 0 5px 20px $black
@@ -174,10 +179,10 @@ table
 
 .team_box
   a
-    font-weight: bold
     -moz-box-shadow: 0 2px 8px $black
     -webkit-box-shadow: 0 2px 8px $black
     box-shadow: 0 2px 8px $black
+    font-weight: bold
     border: 10px solid $darker_grey
     background-color: $white
     text-decoration: none

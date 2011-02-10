@@ -1,13 +1,17 @@
 - @title = "#{@league.short_name}: #{@league.name}"
 %h1= @league.name
 
+- if @league.has_females?
+  #gender_button_container
+    = render :partial => 'gender_links', :locals => {:gender => @gender, :league => @league}
+
 %table
   %tr
     %th League
     %th Name
     %th Players
     %th Code
-  - @league.teams.each do |team|
+  - @teams.each do |team|
     %tr
       %td= link_to team.league.short_name, team.league
       %td= link_to team.name, team
