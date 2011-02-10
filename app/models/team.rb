@@ -4,6 +4,14 @@ class Team < ActiveRecord::Base
   has_many :players, :order => :number, :dependent => :destroy
   belongs_to :league
 
+  def self.search(search)
+    if !search.nil?
+      where("name LIKE ?", "%#{search}%")
+    else
+      scoped
+    end
+  end
+
   def filename
     split = name.split
     file = "#{league.sport.name.downcase}_#{split[0].downcase}"

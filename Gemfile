@@ -11,6 +11,7 @@ gem 'thin'
 gem 'jquery-rails'
 gem 'csv-mapper'
 gem 'scrapi'
+gem 'will_paginate', '3.0.pre2'
 
 group :console do
   gem 'wirble'
