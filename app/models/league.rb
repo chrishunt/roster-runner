@@ -5,6 +5,19 @@ class League < ActiveRecord::Base
     validates_presence_of :name, :short_name, :sport
 
     def has_females?
-      Team.where("league_id = ? AND gender LIKE ?", id, "female").size > 0 ? true : false
+      female_teams.size > 0 ? true : false
+    end
+    
+    def female_teams
+      gendered_teams("female")
+    end
+    def male_teams
+      gendered_teams("male")
+    end
+
+    private
+
+    def gendered_teams(gender)
+      Team.where("league_id = ? AND gender LIKE ?", id, gender)
     end
 end
