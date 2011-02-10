@@ -6,6 +6,8 @@ class LeaguesController < ApplicationController
   end
 
   def show
+    # Cache results for an hour
+    response.headers['Cache-Control'] = 'public, max-age=3600'
     @league = League.find(params[:id])
   end
 
