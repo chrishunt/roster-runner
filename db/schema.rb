@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110209002413) do
+ActiveRecord::Schema.define(:version => 20110210161451) do
 
   create_table "leagues", :force => true do |t|
     t.string   "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20110209002413) do
     t.integer  "league_id"
     t.string   "uri"
     t.boolean  "is_custom"
+    t.string   "gender"
   end
 
 end

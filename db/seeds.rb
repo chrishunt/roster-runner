@@ -1,432 +1,335 @@
-# Create CUSTOM sport for custom rosters
+def build_league(short_name, name, sport, teams)
+  league = League.new
+  league.is_custom = false
+  league.sport = sport
+  league.short_name = short_name
+  league.name = name
+  league.save
+  teams.each do |t|
+    name = t[:name]
+    uri = t[:url]
+    gender = t[:gender].nil? ? "male" : t[:gender]
+    team = Team.new
+    team.league = league
+    team.is_custom = false
+    team.gender = gender
+    team.name = name
+    team.uri = uri
+    team.save
+  end
+end
+
+########################################
+# CUSTOM SPORT
+########################################
 sport = Sport.new
 sport.name = "Custom"
 sport.save
 
-# Create Basball sport
+########################################
+# BASEBALL SPORT
+########################################
 sport = Sport.new
 sport.name = "Baseball"
 sport.save
 
-# Build MLB league
-league = League.new
-league.is_custom = false
-league.sport = sport
-league.short_name = "MLB"
-league.name = "Major League Baseball"
-league.save
+################
+# MLB LEAGUE
+################
+teams = [
+  {
+    :name => "Baltimore Orioles",
+    :url => "http://espn.go.com/mlb/team/roster/_/name/bal/baltimore-orioles"
+  },
+  {
+    :name => "Boston Red Sox",
+    :url => "http://espn.go.com/mlb/team/roster/_/name/bos/boston-red-sox"
+  },
+  {
+    :name => "New York Yankees",
+    :url => "http://espn.go.com/mlb/team/roster/_/name/nyy/new-york-yankees"
+  },
+  {
+    :name => "Tampa Bay Rays",
+    :url => "http://espn.go.com/mlb/team/roster/_/name/tb/tampa-bay-rays"
+  }
+]
+build_league("MLB", "Major League Baseball", sport, teams)
 
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Baltimore Orioles"
-team.uri = "http://espn.go.com/mlb/team/roster/_/name/bal/baltimore-orioles"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Boston Red Sox"
-team.uri = "http://espn.go.com/mlb/team/roster/_/name/bos/boston-red-sox"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "New York Yankees"
-team.uri = "http://espn.go.com/mlb/team/roster/_/name/nyy/new-york-yankees"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Tampa Bay Rays"
-team.uri = "http://espn.go.com/mlb/team/roster/_/name/tb/tampa-bay-rays"
-team.save
-
-# Create Basketball sport
+########################################
+# BASKETBALL SPORT
+########################################
 sport = Sport.new
 sport.name = "Basketball"
 sport.save
 
-# Build NCAA BB league
-league = League.new
-league.is_custom = false
-league.sport = sport
-league.short_name = "NCAA BB"
-league.name = "NCAA Basketball"
-league.save
+################
+# NCAA BB LEAGUE
+################
+teams = [
+  {
+    :name => "Washington Huskies",
+    :url => "http://espn.go.com/mens-college-basketball/team/roster/_/id/264/washington-huskies"
+  }
+]
+build_league("NCAA BB", "NCAA Basketball", sport, teams)
 
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Washington Huskies"
-team.uri = "http://espn.go.com/mens-college-basketball/team/roster/_/id/264/washington-huskies"
-team.save
+################
+# NBA LEAGUE
+################
+teams = [
+  {
+    :name => "Boston Celtics",
+    :url => "http://espn.go.com/nba/team/roster/_/name/bos/boston-celtics"
+  },
+  {
+    :name => "New Jersey Nets",
+    :url => "http://espn.go.com/nba/team/roster/_/name/nj/new-jersey-nets"
+  },
+  {
+    :name => "New York Knicks",
+    :url => "http://espn.go.com/nba/team/roster/_/name/ny/new-york-knicks"
+  },
+  {
+    :name => "Philadelphia 76ers",
+    :url => "http://espn.go.com/nba/team/roster/_/name/phi/philadelphia-76ers"
+  }
+]
+build_league("NBA", "National Basketball Association", sport, teams)
 
-# Build NBA league
-league = League.new
-league.is_custom = false
-league.sport = sport
-league.short_name = "NBA"
-league.name = "National Basketball Association"
-league.save
-
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Boston Celtics"
-team.uri = "http://espn.go.com/nba/team/roster/_/name/bos/boston-celtics"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "New Jersey Nets"
-team.uri = "http://espn.go.com/nba/team/roster/_/name/nj/new-jersey-nets"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "New York Knicks"
-team.uri = "http://espn.go.com/nba/team/roster/_/name/ny/new-york-knicks"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Philadelphia 76ers"
-team.uri = "http://espn.go.com/nba/team/roster/_/name/phi/philadelphia-76ers"
-team.save
-
-# Create Football sport
+########################################
+# FOOTBALL SPORT
+########################################
 sport = Sport.new
 sport.name = "Football"
 sport.save
 
-# Build NCAA FB league
-league = League.new
-league.is_custom = false
-league.sport = sport
-league.short_name = "NCAA FB"
-league.name = "NCAA Football"
-league.save
+################
+# NCAA FB LEAGUE
+################
+teams = [
+  {
+    :name => "Boston College Eagles",
+    :url => "http://espn.go.com/college-football/team/roster/_/id/103/boston-college-eagles"
+  },
+  {
+    :name => "Washington Huskies",
+    :url => "http://espn.go.com/college-football/team/roster/_/id/264/washington-huskies"
+  }
+]
+build_league("NCAA FB", "NCAA Football", sport, teams)
 
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Boston College Eagles"
-team.uri = "http://espn.go.com/college-football/team/roster/_/id/103/boston-college-eagles"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Washington Huskies"
-team.uri = "http://espn.go.com/college-football/team/roster/_/id/264/washington-huskies"
-team.save
+################
+# NFL LEAGUE
+################
+teams = [
+  {
+    :name => "Jacksonville Jaguars",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/jac/jacksonville-jaguars"
+  },
+  {
+    :name => "Indianapolis Colts",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/ind/indianapolis-colts"
+  },
+  {
+    :name => "Atlanta Falcons",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/atl/atlanta-falcons"
+  },
+  {
+    :name => "Baltimore Ravens",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/bal/baltimore-ravens"
+  },
+  {
+    :name => "Chicago Bears",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/chi/chicago-bears"
+  },
+  {
+    :name => "Dallas Cowboys",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/dal/dallas-cowboys"
+  },
+  {
+    :name => "New York Jets",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/nyj/new-york-jets"
+  },
+  {
+    :name => "Cincinnati Bengals",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/cin/cincinnati-bengals"
+  },
+  {
+    :name => "Cleveland Browns",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/cle/cleveland-browns"
+  },
+  {
+    :name => "Pittsburgh Steelers",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/pit/pittsburgh-steelers"
+  },
+  {
+    :name => "Houston Texans",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/hou/houston-texans"
+  },
+  {
+    :name => "Tennessee Titans",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/ten/tennessee-titans"
+  },
+  {
+    :name => "Denver Broncos",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/den/denver-broncos"
+  },
+  {
+    :name => "Kansas City Chiefs",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/kc/kansas-city-chiefs"
+  },
+  {
+    :name => "Oakland Raiders",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/oak/oakland-raiders"
+  },
+  {
+    :name => "San Diego Chargers",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/sd/san-diego-chargers"
+  },
+  {
+    :name => "Detriot Lions",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/det/detroit-lions"
+  },
+  {
+    :name => "Green Bay Packers",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/gb/green-bay-packers"
+  },
+  {
+    :name => "Minnesota Vikings",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/min/minnesota-vikings"
+  },
+  {
+    :name => "Carolina Panthers",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/car/carolina-panthers"
+  },
+  {
+    :name => "New Orleans Saints",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/no/new-orleans-saints"
+  },
+  {
+    :name => "Tampa Bay Buccaneers",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/tb/tampa-bay-buccaneers"
+  },
+  {
+    :name => "Arizona Cardinals",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/ari/arizona-cardinals"
+  },
+  {
+    :name => "St. Louis Rams",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/stl/st-louis-rams"
+  },
+  {
+    :name => "San Francisco 49ers",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/sf/san-francisco-49ers"
+  },
+  {
+    :name => "Seattle Seahawks",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/sea/seattle-seahawks"
+  },
+  {
+    :name => "Buffalo Bills",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/buf/buffalo-bills"
+  },
+  {
+    :name => "New York Giants",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/nyg/new-york-giants"
+  },
+  {
+    :name => "Miami Dolphins",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/mia/miami-dolphins"
+  },
+  {
+    :name => "Philadelphia Eagles",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/phi/philadelphia-eagles"
+  },
+  {
+    :name => "New England Patriots",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/ne/new-england-patriots"
+  },
+  {
+    :name => "Washington Redskins",
+    :url => "http://espn.go.com/nfl/team/roster/_/name/wsh/washington-redskins"
+  }
+]
+build_league("NFL", "National Football League", sport, teams)
 
-# Build NFL league
-league = League.new
-league.is_custom = false
-league.sport = sport
-league.short_name = "NFL"
-league.name = "National Football League"
-league.save
 
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Jacksonville Jaguars"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/jac/jacksonville-jaguars"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Indianapolis Colts"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/ind/indianapolis-colts"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Atlanta Falcons"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/atl/atlanta-falcons"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Baltimore Ravens"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/bal/baltimore-ravens"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Chicago Bears"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/chi/chicago-bears"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Dallas Cowboys"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/dal/dallas-cowboys"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "New York Jets"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/nyj/new-york-jets"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Cincinnati Bengals"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/cin/cincinnati-bengals"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Cleveland Browns"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/cle/cleveland-browns"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Pittsburgh Steelers"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/pit/pittsburgh-steelers"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Houston Texans"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/hou/houston-texans"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Tennessee Titans"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/ten/tennessee-titans"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Denver Broncos"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/den/denver-broncos"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Kansas City Chiefs"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/kc/kansas-city-chiefs"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Oakland Raiders"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/oak/oakland-raiders"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "San Diego Chargers"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/sd/san-diego-chargers"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Detriot Lions"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/det/detroit-lions"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Green Bay Packers"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/gb/green-bay-packers"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Minnesota Vikings"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/min/minnesota-vikings"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Carolina Panthers"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/car/carolina-panthers"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "New Orleans Saints"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/no/new-orleans-saints"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Tampa Bay Buccaneers"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/tb/tampa-bay-buccaneers"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Arizona Cardinals"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/ari/arizona-cardinals"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "St. Louis Rams"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/stl/st-louis-rams"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "San Francisco 49ers"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/sf/san-francisco-49ers"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Seattle Seahawks"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/sea/seattle-seahawks"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Buffalo Bills"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/buf/buffalo-bills"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "New York Giants"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/nyg/new-york-giants"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Miami Dolphins"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/mia/miami-dolphins"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Philadelphia Eagles"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/phi/philadelphia-eagles"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "New England Patriots"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/ne/new-england-patriots"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Washington Redskins"
-team.uri = "http://espn.go.com/nfl/team/roster/_/name/wsh/washington-redskins"
-team.save
-
-# Create Soccer sport
+########################################
+# SOCCER SPORT
+########################################
 sport = Sport.new
 sport.name = "Soccer"
 sport.save
 
-# Build MLS league
-league = League.new
-league.is_custom = false
-league.sport = sport
-league.short_name = "MLS"
-league.name = "Major League Soccer"
-league.save
+################
+# MLS LEAGUE
+################
+teams = [
+  {
+    :name => "Chicago Fire",
+    :url => "http://www.mlssoccer.com/players/chicago-fire"
+  },
+  {
+    :name => "Chivas USA",
+    :url => "http://www.mlssoccer.com/players/chivas-usa"
+  },
+  {
+    :name => "Colorado Rapids",
+    :url => "http://www.mlssoccer.com/players/colorado-rapids"
+  },
+  {
+    :name => "Columbus Crew",
+    :url => "http://www.mlssoccer.com/players/columbus-crew"
+  },
+  {
+    :name => "D.C. United",
+    :url => "http://www.mlssoccer.com/players/dc-united"
+  },
+  {
+    :name => "FC Dallas",
+    :url => "http://www.mlssoccer.com/players/fc-dallas"
+  },
+  {
+    :name => "Houston Dynamo",
+    :url => "http://www.mlssoccer.com/players/houston-dynamo"
+  },
+  {
+    :name => "Sporting Kansas City",
+    :url => "http://www.mlssoccer.com/players/sporting-kansas-city"
+  },
+  {
+    :name => "Los Angeles Galaxy",
+    :url => "http://www.mlssoccer.com/players/los-angeles-galaxy"
+  },
+  {
+    :name => "New England Revolution",
+    :url => "http://www.mlssoccer.com/players/new-england-revolution"
+  },
+  {
+    :name => "New York Red Bulls",
+    :url => "http://www.mlssoccer.com/players/new-york-red-bulls"
+  },
+  {
+    :name => "Philadelphia Union",
+    :url => "http://www.mlssoccer.com/players/philadelphia-union"
+  },
+  {
+    :name => "Real Salt Lake",
+    :url => "http://www.mlssoccer.com/players/real-salt-lake"
+  },
+  {
+    :name => "San Jose Earthquakes",
+    :url => "http://www.mlssoccer.com/players/san-jose-earthquakes"
+  },
+  {
+    :name => "Seattle Sounders FC",
+    :url => "http://www.mlssoccer.com/players/seattle-sounders-fc"
+  },
+  {
+    :name => "Toronto FC",
+    :url => "http://www.mlssoccer.com/players/toronto-fc"
+  }
+]
+build_league("MLS", "Major League Soccer", sport, teams)
 
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Chicago Fire"
-team.uri = "http://www.mlssoccer.com/players/chicago-fire"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Chivas USA"
-team.uri = "http://www.mlssoccer.com/players/chivas-usa"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Colorado Rapids"
-team.uri = "http://www.mlssoccer.com/players/colorado-rapids"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Columbus Crew"
-team.uri = "http://www.mlssoccer.com/players/columbus-crew"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "D.C. United"
-team.uri = "http://www.mlssoccer.com/players/dc-united"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "FC Dallas"
-team.uri = "http://www.mlssoccer.com/players/fc-dallas"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Houston Dynamo"
-team.uri = "http://www.mlssoccer.com/players/houston-dynamo"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Sporting Kansas City"
-team.uri = "http://www.mlssoccer.com/players/sporting-kansas-city"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Los Angeles Galaxy"
-team.uri = "http://www.mlssoccer.com/players/los-angeles-galaxy"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "New England Revolution"
-team.uri = "http://www.mlssoccer.com/players/new-england-revolution"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "New York Red Bulls"
-team.uri = "http://www.mlssoccer.com/players/new-york-red-bulls"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Philadelphia Union"
-team.uri = "http://www.mlssoccer.com/players/philadelphia-union"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Real Salt Lake"
-team.uri = "http://www.mlssoccer.com/players/real-salt-lake"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "San Jose Earthquakes"
-team.uri = "http://www.mlssoccer.com/players/san-jose-earthquakes"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Seattle Sounders FC"
-team.uri = "http://www.mlssoccer.com/players/seattle-sounders-fc"
-team.save
-team = Team.new
-team.is_custom = false
-team.league = league
-team.name = "Toronto FC"
-team.uri = "http://www.mlssoccer.com/players/toronto-fc"
-team.save
