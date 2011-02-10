@@ -88,25 +88,26 @@ class Team < ActiveRecord::Base
     ret
   end
 
-  def scrape_roster(csv = nil)
-    # Delete all players on this team
-    players.destroy_all 
+  def scrape(csv = nil)
     league_name = league.short_name.upcase
-    # Scrape according to league
     if league_name == "MLS"
-      scrape_mls_roster
+      scrape_mls
     elsif league_name == "NFL" ||
           league_name == "NBA" ||
           league_name == "NCAA FB" ||
           league_name == "NCAA BB" ||
           league_name == "MLB"
-      scrape_espn_roster
+      players.destroy_all 
+      scrape_espn
     elsif league_name == "CUSTOM" && !csv.nil?
-      scrape_csv_roster(csv)
+      players.destroy_all 
+      scrape_csv(csv)
+    else
+      puts "#{league_name} not a recognized league."
     end
   end
 
-  def scrape_mls_roster
+  def scrape_mls
     scraper = Scraper.define do
       process "#mpl-team-name", :name => :text
       array :players
@@ -132,7 +133,7 @@ class Team < ActiveRecord::Base
     end
   end
 
-  def scrape_espn_roster
+  def scrape_espn
     scraper = Scraper.define do
       array :players_odd
       process ".oddrow", :players_odd => Scraper.define {
@@ -181,7 +182,7 @@ class Team < ActiveRecord::Base
     end
   end
 
-  def scrape_csv_roster(csv)
+  def scrape_csv(csv)
     rows = CsvMapper.import(csv.to_s, :type => :io) do
       [number, position, first_name, last_name]
     end

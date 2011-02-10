@@ -16,6 +16,8 @@ class Player < ActiveRecord::Base
         case sport
         when "baseball"
           case p
+          when "OF"
+            ret << "outfielder"
           when "1B"
             ret << "first baseman"
           when "2B"

@@ -1,26 +1,31 @@
 require 'scrapi'
 
 scraper = Scraper.define do
-  array :players_odd
-  process ".oddrow", :players_odd => Scraper.define {
-    array :rows
-    process "td", :rows => :text
-    result :rows
+  array :divisions
+  process ".mod-container.mod-open-list.mod-teams-list-medium.mod-no-footer", :divisions => Scraper.define {
+    array :teams
+    process "li", :teams => Scraper.define {
+      process "h5 a", :name => :text
+      array :links
+      process 'a', :links => "@href"
+      result :name, :links
+    }
+    result :teams
   }
-  array :players_even
-  process ".evenrow", :players_even => Scraper.define {
-    array :rows
-    process "td", :rows => :text
-    result :rows
-  }
-  result :players_odd, :players_even
+  result :divisions
 end
 
-uri = URI.parse("http://espn.go.com/nfl/team/roster/_/name/wsh/washington-redskins")
+uri = URI.parse("http://espn.go.com/nba/teams")
 
-results = scraper.scrape(uri)
-
-one = [["1","2","3"],["4","5","6"]]
-two = [["7","8","9"],["10","11","12"]]
-together = one + two
-puts together.inspect
+divisions = scraper.scrape(uri)
+divisions.each do |division|
+  puts "************************"
+  division.each do |team|
+    puts "------------"
+    puts "Team Name: #{team.name}"
+    espn_home = 'http://espn.go.com'
+    puts "Roster URL: #{espn_home}#{team.links[5]}"
+    puts "------------"
+  end
+  puts "************************"
+end

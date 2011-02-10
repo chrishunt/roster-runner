@@ -98,6 +98,7 @@ class TeamsController < ApplicationController
       @league.sport = @sport
       @league.name = "Custom League"
       @league.short_name = "CUSTOM"
+      @league.uri = "http://rosterrunner.com"
       @league.save
       @team = Team.new
       @team.league = @league
@@ -106,7 +107,7 @@ class TeamsController < ApplicationController
       @team.name = @team_name
       @team.uri = "http://rosterrunner.com"
       @team.save
-      @team.scrape_roster(@csv)
+      @team.scrape(@csv)
       @league = @team.league
       redirect_to @team
     end
