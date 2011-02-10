@@ -54,6 +54,9 @@ class TeamsController < ApplicationController
       if prefix.nil? || prefix == ""
         prefix = @team.prefix
       end
+      # Cache results for one month 
+      response.headers['Cache-Control'] = 'public, max-age=2592000'
+      # Prompt download
       response.headers['Content-Type'] = 'text/plain'
       response.headers['Content-Disposition'] = "attachment; filename=#{@team.filename}"
       render :text => @team.code(prefix)
