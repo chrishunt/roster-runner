@@ -6,7 +6,7 @@ class Team < ActiveRecord::Base
 
   def self.search(search)
     if !search.nil?
-      where("name LIKE ?", "%#{search}%")
+      where("upper(name) LIKE ?", "%#{search.upcase}%")
     else
       scoped
     end
