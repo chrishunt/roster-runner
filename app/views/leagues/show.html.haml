@@ -1,12 +1,12 @@
 - @title = "#{@league.short_name}: #{@league.name}"
 %h1= @league.name
 
+= form_tag @league, :method => 'get', :id => 'team_search_form' do
+  = render :partial => 'search_form'
+
 - if @league.has_females?
   #gender_button_container
     = render :partial => 'gender_links'
-
-= form_tag @league, :method => 'get', :id => 'team_search_form' do
-  = render :partial => 'search_form'
 
 #teams
   = render :partial => 'teams'

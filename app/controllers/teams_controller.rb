@@ -51,6 +51,7 @@ class TeamsController < ApplicationController
   def code
     @team = Team.find params[:id]
     if !@team.nil?
+      format = params[:form]
       prefix = params[:prefix]
       if prefix.nil? || prefix == ""
         prefix = @team.prefix
@@ -60,7 +61,7 @@ class TeamsController < ApplicationController
       # Prompt download
       response.headers['Content-Type'] = 'text/plain'
       response.headers['Content-Disposition'] = "attachment; filename=#{@team.filename}"
-      render :text => @team.code(prefix)
+      render :text => @team.code(prefix,format)
     end
   end
 
@@ -104,6 +105,7 @@ class TeamsController < ApplicationController
       @team.league = @league
       @team.is_custom = true
       @team.gender = "male"
+      @team.uri = "http://rosterrunner.com"
       @team.name = @team_name
       @team.save
       @team.scrape(@csv)

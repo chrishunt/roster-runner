@@ -1,6 +1,6 @@
 class Team < ActiveRecord::Base
   attr_accessible :name
-  validates_presence_of :name, :league, :gender
+  validates_presence_of :name, :league, :gender, :uri
   has_many :players, :order => :number, :dependent => :destroy
   belongs_to :league
 
@@ -25,7 +25,7 @@ class Team < ActiveRecord::Base
     name.first.downcase
   end
 
-  def code(prefix = prefix)
+  def code(prefix = prefix, format = "pm")
     ret = ""
     i = 0
     while(i < players.size)

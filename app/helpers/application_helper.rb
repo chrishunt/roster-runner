@@ -1,23 +1,40 @@
 module ApplicationHelper
   def download_dialog
-    haml_tag :p do
-      haml_concat "Customize the prefix for this team's generated roster snippets."
-    end
     haml_tag :form do
+      # Format selection pulldown
+      #haml_tag :p do
+      #  haml_concat "Blah Format"
+      #end
+      #haml_tag :select,
+      #  :id => "download_dialog_form",
+      #  :name => "download_dialog_form[form]" do
+      #  haml_tag :option, :value => "pm" do
+      #      haml_concat "Photo Mechanic"
+      #  end
+      #  haml_tag :option, :value => "pm" do
+      #      haml_concat "Text Expander"
+      #  end
+      #  haml_tag :option, :value => "pm" do
+      #      haml_concat "Typinator"
+      #  end
+      #  haml_tag :option, :value => "ak" do
+      #      haml_concat "AutoHotKey"
+      #  end
+      #end
+      # Prefix input box
+      haml_tag :p do
+        haml_concat "Customize team prefix for this roster:"
+      end
       haml_tag :input, 
         :type => "text", 
         :name => "download_dialog_prefix", 
         :id => "download_dialog_prefix",
         :value => ""
+      # Hidden form elements
       haml_tag :input, 
         :type => "hidden", 
         :name => "download_dialog_team_id",
         :id => "download_dialog_team_id",
-        :value => ""
-      haml_tag :input, 
-        :type => "hidden", 
-        :name => "download_dialog_form",
-        :id => "download_dialog_form",
         :value => ""
     end
   end

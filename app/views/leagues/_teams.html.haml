@@ -3,12 +3,13 @@
     %th League
     %th Name
     %th Players
-    %th Code
+    %th Roster
   - @teams.each do |team|
     %tr
-      %td= link_to team.league.short_name, team.league
-      %td= link_to team.name, team
-      %td= link_to team.players.size, team
+      - title = "View Team Roster"
+      %td= link_to team.league.short_name, team.league, :title => title
+      %td= link_to team.name, team, :title => title
+      %td= link_to team.players.size, team, :title => title
       %td
         = render :partial => 'teams/download_link', :locals => {:team => team}
 = will_paginate @teams, :inner_window => 1, :outer_window => 1
