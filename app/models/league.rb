@@ -51,7 +51,7 @@ class League < ActiveRecord::Base
       division.each do |t|
         team_name_link_id = nil
         team_uri_link_id = nil
-        # Pick link IDs based on ESPN page
+        # Pick link IDs based on league type
         if short_name.upcase.include?('NCAA')
           team_name_link_id = 0
           team_uri_link_id = 3
@@ -64,7 +64,7 @@ class League < ActiveRecord::Base
         end
         espn_home = "http://espn.go.com"
         team_uri = "#{espn_home}#{t.links_href[team_uri_link_id]}"
-        team_name = t.links_text[team_name_link_id]
+        team_name = t.links_text[team_name_link_id].gsub("&amp;","&")
         team = Team.new 
         team.league_id = id
         team.is_custom = false
