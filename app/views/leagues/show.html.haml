@@ -5,20 +5,9 @@
   #gender_button_container
     = render :partial => 'gender_links', :locals => {:gender => @gender, :league => @league}
 
-= will_paginate @teams
+= form_tag @league, :method => 'get', :id => 'team_search_form' do
+  = text_field_tag :search, @search
+  = submit_tag "Search", :id => "team_search_submit_button", :class => "button", :name => nil
 
-%table
-  %tr
-    %th League
-    %th Name
-    %th Players
-    %th Code
-  - @teams.each do |team|
-    %tr
-      %td= link_to team.league.short_name, team.league
-      %td= link_to team.name, team
-      %td= link_to team.players.size, team
-      %td
-        = render :partial => 'teams/download_link', :locals => {:team => team}
-
-= will_paginate @teams
+#teams
+  = render :partial => 'teams'

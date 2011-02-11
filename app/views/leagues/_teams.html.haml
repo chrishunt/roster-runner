@@ -1,0 +1,15 @@
+= will_paginate @teams
+%table
+  %tr
+    %th League
+    %th Name
+    %th Players
+    %th Code
+  - @teams.each do |team|
+    %tr
+      %td= link_to team.league.short_name, team.league
+      %td= link_to team.name, team
+      %td= link_to team.players.size, team
+      %td
+        = render :partial => 'teams/download_link', :locals => {:team => team}
+= will_paginate @teams

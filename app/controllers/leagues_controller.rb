@@ -6,8 +6,9 @@ class LeaguesController < ApplicationController
 
   def show
     @gender = params[:gender].nil? ? "male" : params[:gender]
+    @search = params[:search]
     @league = League.find(params[:id])
-    @teams = Team.search(params[:search]).where("league_id = ? AND gender LIKE ?", @league.id, @gender).paginate(:per_page => 10, :page => params[:page])
+    @teams = Team.search(@search).where("league_id = ? AND gender LIKE ?", @league.id, @gender).paginate(:per_page => 10, :page => params[:page])
     # Cache results for 5 minutes
     #response.headers['Cache-Control'] = 'public, max-age=300'
   end

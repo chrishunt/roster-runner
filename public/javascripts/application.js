@@ -37,8 +37,24 @@ function init_download_dialog(){
   });
 }
 
+function ajaxify_links(){
+  $('#teams .pagination a').live('click', function(){
+    $.getScript(this.href);
+    return false;
+  });
+}
+
+function ajaxify_search_button(){
+  $('#team_search_form').submit(function(){
+    $.get(this.action, $(this).serialize(), null, "script");
+    return false;
+  });
+}
+
 $(document).ready(function() {
   init_download_dialog();
   init_submit_buttons();
+  ajaxify_links();
+  ajaxify_search_button();
 });
 
