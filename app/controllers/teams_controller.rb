@@ -7,6 +7,7 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    @players = Player.where("team_id = ?", @team.id).order(:last_name).paginate(:per_page => 10, :page => params[:page])
     @league = @team.league
     # Cache results for 5 minutes
     #response.headers['Cache-Control'] = 'public, max-age=300'

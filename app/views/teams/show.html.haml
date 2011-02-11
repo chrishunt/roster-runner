@@ -5,15 +5,5 @@
   = render :partial => 'download_link', :locals => {:team => @team}
   = render :partial => 'customize_link', :locals => {:team => @team}
 
-%table
-  %tr
-    %th Number
-    %th First name
-    %th Last name
-    %th Position
-  - @team.players.each do |player|
-    %tr
-      %td= player.number
-      %td= player.first_name
-      %td= player.last_name
-      %td= player.position
+#players
+  = render :partial => 'players'

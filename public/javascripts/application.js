@@ -25,6 +25,7 @@ function create_download_dialog(){
     }
   });
 }
+
 function replace_download_dialog_button(){
   $('.download_link').click(function(e){
     e.preventDefault();
@@ -38,13 +39,14 @@ function replace_download_dialog_button(){
     $('#download_dialog').dialog('open');
   });
 }
+
 function init_download_dialog(){
   create_download_dialog();
   replace_download_dialog_button();
 }
 
 function ajaxify_links(){
-  $('#teams .pagination a').live('click', function(){
+  $('.pagination a').live('click', function(){
     $.getScript(this.href, function(){
       replace_download_dialog_button();
     });
