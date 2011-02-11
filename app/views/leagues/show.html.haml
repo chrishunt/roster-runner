@@ -3,11 +3,10 @@
 
 - if @league.has_females?
   #gender_button_container
-    = render :partial => 'gender_links', :locals => {:gender => @gender, :league => @league}
+    = render :partial => 'gender_links'
 
 = form_tag @league, :method => 'get', :id => 'team_search_form' do
-  = text_field_tag :search, @search
-  = submit_tag "Search", :id => "team_search_submit_button", :class => "button", :name => nil
+  = render :partial => 'search_form'
 
 #teams
   = render :partial => 'teams'

@@ -1,8 +1,8 @@
 = link_to 'Men Teams', 
-  league_path(:id => league, :gender => "male"), 
-  :class => "button #{'button_selected' if gender == 'male'}",
-  :title => "View Men's #{league.short_name} League"
+  league_path(:id => @league, :gender => "male"), 
+  :class => "button #{'button_selected' if @gender == 'male'}",
+  :title => "View Men's #{@league.short_name} League"
 = link_to 'Women Teams', 
-  league_path(:id => league, :gender => "female"), 
-  :class => "button #{'button_selected' if gender == 'female'}",
-  :title => "View Womens's #{league.short_name} League"
+  league_path(:id => @league, :gender => "female"), 
+  :class => "button #{'button_selected' if @gender == 'female'}",
+  :title => "View Womens's #{@league.short_name} League"

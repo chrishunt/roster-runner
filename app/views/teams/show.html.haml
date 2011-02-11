@@ -1,7 +1,6 @@
 - @title = "#{@team.league.short_name}: #{@team.name}"
 %h1= link_to @team.name, @team.league
 
-
 #team_button_container
   = render :partial => 'download_link', :locals => {:team => @team}
   = render :partial => 'customize_link', :locals => {:team => @team}
