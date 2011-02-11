@@ -1,10 +1,11 @@
-def build_league(short_name, name, uri, sport)
+def build_league(sport, short_name, name, male_uri, female_uri = nil)
   league = League.new
   league.is_custom = false
   league.sport = sport
   league.short_name = short_name
   league.name = name
-  league.uri = uri
+  league.male_uri = male_uri
+  league.female_uri = female_uri
   league.save
 end
 
@@ -25,10 +26,10 @@ sport.save
 ################
 # MLB LEAGUE
 ################
-build_league("MLB", 
+build_league(sport,
+             "MLB", 
              "Major League Baseball",
-             "http://espn.go.com/mlb/teams",
-             sport)
+             "http://espn.go.com/mlb/teams")
 
 ########################################
 # BASKETBALL SPORT
@@ -40,18 +41,19 @@ sport.save
 #################
 ## NCAA BB LEAGUE
 #################
-build_league("NCAA BB", 
+build_league(sport,
+             "NCAA BB", 
              "NCAA Basketball",
-             "http://espn.go.com/mens-college-basketball/teams",
-             sport)
+             "http://espn.go.com/mens-college-basketball/teams")
 
 #################
 ## NBA LEAGUE
 #################
-build_league("NBA", 
+build_league(sport,
+             "NBA", 
              "National Basketball Association",
              "http://espn.go.com/nba/teams",
-             sport)
+             "http://sports.espn.go.com/wnba/teams")
 
 #########################################
 ## FOOTBALL SPORT

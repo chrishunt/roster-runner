@@ -124,6 +124,9 @@ h1 {
 .button_selected {
   background-color: #e16003; }
 
+#gender_button_container {
+  margin: 0 0 30px 0; }
+
 table {
   -moz-box-shadow: 0 5px 20px black;
   -webkit-box-shadow: 0 5px 20px black;
@@ -186,7 +189,7 @@ table {
 
 #team_search_form #search {
   font-size: 110%;
-  width: 200px;
+  width: 220px;
   font-size: 110%; }
 
 #custom_roster_form_container {

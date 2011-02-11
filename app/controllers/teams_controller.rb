@@ -6,10 +6,10 @@ class TeamsController < ApplicationController
   end
 
   def show
-    # Cache results for 5 minutes
-    #response.headers['Cache-Control'] = 'public, max-age=300'
     @team = Team.find(params[:id])
     @league = @team.league
+    # Cache results for 5 minutes
+    #response.headers['Cache-Control'] = 'public, max-age=300'
   end
 
   def new
@@ -98,14 +98,12 @@ class TeamsController < ApplicationController
       @league.sport = @sport
       @league.name = "Custom League"
       @league.short_name = "CUSTOM"
-      @league.uri = "http://rosterrunner.com"
       @league.save
       @team = Team.new
       @team.league = @league
       @team.is_custom = true
       @team.gender = "male"
       @team.name = @team_name
-      @team.uri = "http://rosterrunner.com"
       @team.save
       @team.scrape(@csv)
       @league = @team.league

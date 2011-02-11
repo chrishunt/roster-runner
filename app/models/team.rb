@@ -1,6 +1,6 @@
 class Team < ActiveRecord::Base
   attr_accessible :name
-  validates_presence_of :name, :league, :uri, :gender
+  validates_presence_of :name, :league, :gender
   has_many :players, :order => :number, :dependent => :destroy
   belongs_to :league
 
@@ -97,6 +97,7 @@ class Team < ActiveRecord::Base
   end
 
   def scrape(csv = nil)
+    return false if uri.nil?
     league_name = league.short_name.upcase
     if league_name == "MLS"
       scrape_mls
