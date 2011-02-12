@@ -8,7 +8,7 @@
     %th Roster
   - @teams.each do |team|
     %tr
-      - title = "View Team Roster"
+      - title = "View Team Roster For #{team.name}"
       %td= link_to team.league.short_name, team.league, :title => title
       %td= link_to team.name, team, :title => title
       %td= link_to team.players.size, team, :title => title
