@@ -33,7 +33,7 @@ h1 {
   box-shadow: 0 2px 5px black;
   background-color: #231f20;
   color: #a2a2a2;
-  padding: 20px;
+  padding: 20px 0;
   text-align: center;
   font-size: 110%; }
   #header div {
@@ -45,7 +45,7 @@ h1 {
       border-radius: 3px;
       color: #a2a2a2;
       text-decoration: none;
-      padding: 3px 20px; }
+      padding: 3px 18px; }
       #header div a:hover, #header div .selected:hover {
         color: white; }
   #header .selected a {
