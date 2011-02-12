@@ -26,7 +26,7 @@ class League < ActiveRecord::Base
       scrape_espn(male_uri, 'male') if !male_uri.nil?
       scrape_espn(female_uri, 'female') if !female_uri.nil?
     else
-      puts "#{shot_name} not a recognized league."
+      puts "***** #{short_name} not a recognized league."
     end
   end
 
