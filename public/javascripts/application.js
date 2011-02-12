@@ -5,7 +5,7 @@ function init_submit_buttons(){
 function create_download_dialog(){
   $('#download_dialog').dialog({
     width: 380,
-    height: 205,
+    height: 250,
     autoOpen: false,
     modal: true,
     draggable: false,
@@ -15,10 +15,11 @@ function create_download_dialog(){
         $(this).dialog('close');
       },
       "Download": function(){
+        var team_name = $('#download_dialog_team_name').val();
         var prefix = $('#download_dialog_prefix').val();
         var team_id = $('#download_dialog_team_id').val();
         var form = $('#download_dialog_form').val();
-        var url = "/teams/" + team_id + "/code?prefix=" + prefix + "&form=" + form;
+        var url = "/teams/" + team_id + "/code?team_name=" + team_name + "&prefix=" + prefix + "&form=" + form;
         window.location.href = url;
         $(this).dialog('close');
       }
@@ -30,9 +31,11 @@ function replace_download_dialog_button(){
   $('.download_link').click(function(e){
     e.preventDefault();
     var split = $(this).attr('id').split('_');
-    var team_id = split[split.length-2]
-    var prefix = split[split.length-1]
+    var team_id = split[0]
+    var prefix = split[1]
+    var team_name = split[2]
     var form = "pm";
+    $('#download_dialog_team_name').val(team_name);
     $('#download_dialog_prefix').val(prefix);
     $('#download_dialog_team_id').val(team_id);
     $('#download_dialog_form').val(form);

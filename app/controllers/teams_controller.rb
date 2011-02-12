@@ -51,17 +51,21 @@ class TeamsController < ApplicationController
   def code
     @team = Team.find params[:id]
     if !@team.nil?
+      team_name = params[:team_name]
       format = params[:form]
       prefix = params[:prefix]
       if prefix.nil? || prefix == ""
         prefix = @team.prefix
+      end
+      if team_name.nil? || team_name == ""
+        team_name = @team.name
       end
       # Cache results for 5 minutes
       #response.headers['Cache-Control'] = 'public, max-age=300'
       # Prompt download
       response.headers['Content-Type'] = 'text/plain'
       response.headers['Content-Disposition'] = "attachment; filename=#{@team.filename}"
-      render :text => @team.code(prefix,format)
+      render :text => @team.code(prefix,team_name,format)
     end
   end
 

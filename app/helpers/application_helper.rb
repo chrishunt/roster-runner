@@ -23,7 +23,15 @@ module ApplicationHelper
       #end
       # Prefix input box
       haml_tag :p do
-        haml_concat "Customize team prefix for this roster:"
+        haml_concat "Customize team name for this roster:"
+      end
+      haml_tag :input, 
+        :type => "text", 
+        :name => "download_dialog_team_name", 
+        :id => "download_dialog_team_name",
+        :value => ""
+      haml_tag :p do
+        haml_concat "Customize snippet prefix for this roster:"
       end
       haml_tag :input, 
         :type => "text", 

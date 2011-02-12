@@ -25,7 +25,7 @@ class Team < ActiveRecord::Base
     name.first.downcase
   end
 
-  def code(prefix = prefix, format = "pm")
+  def code(prefix = prefix, team_name = name, format = "pm")
     ret = ""
     i = 0
     while(i < players.size)
@@ -63,16 +63,16 @@ class Team < ActiveRecord::Base
           end
         end
         # save expansion each player
-        expansions[:sea1] << "#{p.team.name} #{p.position_expanded} #{p.name} (#{p.number})"
+        expansions[:sea1] << "#{team_name} #{p.position_expanded} #{p.name} (#{p.number})"
         expansions[:sea1f] << "#{p.first_name}"
         expansions[:sea1l] << "#{p.last_name}"
         expansions[:sea1p] << "#{p.position_expanded} #{p.name}"
-        expansions[:sea1t] << "#{p.team.name}'s #{p.name}"
+        expansions[:sea1t] << "#{team_name}'s #{p.name}"
         expansions[:sea1n] << "#{p.name} (#{p.number})"
-        expansions[:sea1tp] << "#{p.team.name} #{p.position_expanded} #{p.name}"
-        expansions[:sea1tn] << "#{p.team.name} #{p.name} (#{p.number})"
+        expansions[:sea1tp] << "#{team_name} #{p.position_expanded} #{p.name}"
+        expansions[:sea1tn] << "#{team_name} #{p.name} (#{p.number})"
         expansions[:sea1pn] << "#{p.position_expanded} #{p.name} (#{p.number})"
-        expansions[:sea1tpn] << "#{p.team.name} #{p.position_expanded} #{p.name} (#{p.number})"
+        expansions[:sea1tpn] << "#{team_name} #{p.position_expanded} #{p.name} (#{p.number})"
         expansions[:sea1s] << "[#{p.last_name},#{p.first_name}],"
         # append duplicate tag if multiple players have this number
         if group.size > 1
@@ -91,7 +91,7 @@ class Team < ActiveRecord::Base
       end
     end
     # add team to return string
-    ret << prefix << "\t" << name << "\n"
+    ret << prefix << "\t" << team_name << "\n"
     # return expansions
     ret
   end
