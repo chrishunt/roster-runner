@@ -15,5 +15,4 @@
       %td
         = render :partial => 'teams/download_link', :locals => {:team => team}
 
-%p.pagination_info= page_entries_info @teams
 = will_paginate @teams, :inner_window => 1, :outer_window => 1

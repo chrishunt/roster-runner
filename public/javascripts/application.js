@@ -4,8 +4,8 @@ function init_submit_buttons(){
 
 function create_download_dialog(){
   $('#download_dialog').dialog({
-    width: 400,
-    height: 215,
+    width: 380,
+    height: 205,
     autoOpen: false,
     modal: true,
     draggable: false,
