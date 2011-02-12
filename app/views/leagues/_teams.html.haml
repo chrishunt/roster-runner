@@ -1,3 +1,5 @@
+%p.pagination_info= page_entries_info @teams
+
 %table
   %tr
     %th League
@@ -12,4 +14,6 @@
       %td= link_to team.players.size, team, :title => title
       %td
         = render :partial => 'teams/download_link', :locals => {:team => team}
+
+%p.pagination_info= page_entries_info @teams
 = will_paginate @teams, :inner_window => 1, :outer_window => 1

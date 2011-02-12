@@ -1,3 +1,5 @@
+%p.pagination_info= page_entries_info @players
+
 %table
   %tr
     %th Number
@@ -10,4 +12,6 @@
       %td= player.first_name
       %td= player.last_name
       %td= player.position
+
+%p.pagination_info= page_entries_info @players
 = will_paginate @players, :inner_window => 1, :outer_window => 1
