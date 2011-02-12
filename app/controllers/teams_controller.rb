@@ -10,7 +10,7 @@ class TeamsController < ApplicationController
     @players = Player.where("team_id = ?", @team.id).order(:last_name).paginate(:per_page => 10, :page => params[:page])
     @league = @team.league
     # Cache results for 5 minutes
-    #response.headers['Cache-Control'] = 'public, max-age=300'
+    response.headers['Cache-Control'] = 'public, max-age=300'
   end
 
   def new
@@ -61,7 +61,7 @@ class TeamsController < ApplicationController
         team_name = @team.name
       end
       # Cache results for 5 minutes
-      #response.headers['Cache-Control'] = 'public, max-age=300'
+      response.headers['Cache-Control'] = 'public, max-age=300'
       # Prompt download
       response.headers['Content-Type'] = 'text/plain'
       response.headers['Content-Disposition'] = "attachment; filename=#{@team.filename}"
