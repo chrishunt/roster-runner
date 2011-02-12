@@ -8,7 +8,7 @@ CodeReplacements::Application.routes.draw do
   resources :teams
   resources :players
 
-  root :to => "about#index"
+  root :to => "leagues#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

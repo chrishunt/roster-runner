@@ -1,7 +1,9 @@
 class LeaguesController < ApplicationController
-  before_filter :redirect_to_root, :except => [:show]
+  before_filter :redirect_to_root, :except => [:index,:show]
 
   def index
+    @league = League.where("is_custom = ?",false).first
+    redirect_to @league if !@league.nil?
   end
 
   def show

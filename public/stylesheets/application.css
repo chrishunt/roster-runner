@@ -18,6 +18,9 @@ a {
   height: 0;
   overflow: hidden; }
 
+p {
+  color: #a2a2a2; }
+
 h1 {
   font-size: 200%;
   margin-bottom: 20px;
@@ -210,6 +213,7 @@ table {
   text-align: center;
   width: 500px; }
   #custom_roster_form_container form p {
+    color: white;
     margin: 0;
     padding: 0;
     font-size: 150%; }

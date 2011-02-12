@@ -47,7 +47,7 @@ module ApplicationHelper
     end
     # Add additional menu items
     menu_items["custom"] = custom_team_path
-    menu_items["about"] = about_path
+    #menu_items["about"] = about_path
     # Display menu items and highlight current
     menu_items.each do |name, url|
       controller_name = controller.controller_name.to_s.downcase
