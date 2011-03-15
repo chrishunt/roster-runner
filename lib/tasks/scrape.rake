@@ -21,7 +21,7 @@ namespace :scrape do
     end
     desc "Scrape all teams for MLS league"
     task :mls => :environment do
-      league = League.where('short_name like ?', 'mls').first
+      league = League.where("upper(short_name) LIKE ?", "MLS").first
       league.scrape
       teams_size = Team.where("league_id = ?", league.id).size
       puts "********** NO TEAMS IN SCRAPE **********" if teams_size == 0
@@ -47,8 +47,8 @@ namespace :scrape do
     desc "Scrape all players for MLS league"
     task :mls => :environment do
       i = 1
-      league = League.where('short_name like ?', 'mls').first
-      teams = Team.where('is_custom = ? and league_id = ?', false, league)
+      league = League.where("upper(short_name) LIKE ?", "MLS").first
+      teams = Team.where("is_custom = ? AND league_id = ?", false, league)
       teams.each do |team|
         team.scrape
         players_size = Player.where("team_id = ?", team.id).size
