@@ -100,6 +100,7 @@ class Team < ActiveRecord::Base
     return false if uri.nil?
     league_name = league.short_name.upcase
     if league_name == "MLS"
+      players.destroy_all 
       scrape_mls
     elsif league_name == "NFL" ||
           league_name == "NBA" ||
