@@ -7,6 +7,7 @@ gem 'rails'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'haml'
+gem 'sass'
 gem 'thin'
 gem 'jquery-rails'
 gem 'csv-mapper'
@@ -14,8 +15,10 @@ gem 'scrapi'
 gem 'will_paginate', '3.0.pre2'
 
 group :console do
-  gem 'wirble'
   gem 'hirb'
+  gem 'wirb'
+  gem 'interactive_editor'
+  gem 'fancy_irb'
 end
 
 group :development do
