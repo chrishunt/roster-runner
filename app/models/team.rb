@@ -119,18 +119,24 @@ class Team < ActiveRecord::Base
 
   def scrape_mls
     scraper = Scraper.define do
-      process "#mpl-team-name", :name => :text
-      array :players
-      process ".mpl-tbody-row", :players => Scraper.define {
-        process ".mpl-number", :number => :text
-        process ".mpl-position", :position => :text
-        process ".mpl-player.active>a", :name => :text
+      array :even_rows
+      process "tr.even", :even_rows => Scraper.define {
+        process ".views-field-field-player-jersey-no-value", :number => :text
+        process ".views-field-field-player-position-detail-value", :position => :text
+        process ".views-field-field-player-lname-value>a", :name => :text
         result :number, :position, :name
       }
-      result :name, :players
+      array :odd_rows
+      process "tr.odd", :odd_rows => Scraper.define {
+        process ".views-field-field-player-jersey-no-value", :number => :text
+        process ".views-field-field-player-position-detail-value", :position => :text
+        process ".views-field-field-player-lname-value>a", :name => :text
+        result :number, :position, :name
+      }
+      result :even_rows, :odd_rows
     end
     results = scraper.scrape(URI.parse(uri))
-    results.players.each do |p|
+    (results.even_rows | results.odd_rows).each do |p|
       next if p[:number].nil? || p[:name].nil? || p[:position].nil?
       player = Player.new
       player.is_custom = false
