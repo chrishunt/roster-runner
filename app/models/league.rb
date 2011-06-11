@@ -81,78 +81,24 @@ class League < ActiveRecord::Base
 
   def scrape_mls
     teams = [
-      {
-        :name => "Chicago Fire",
-        :url => "http://www.mlssoccer.com/players/chicago-fire"
-      },
-      {
-        :name => "Chivas USA",
-        :url => "http://www.mlssoccer.com/players/chivas-usa"
-      },
-      {
-        :name => "Colorado Rapids",
-        :url => "http://www.mlssoccer.com/players/colorado-rapids"
-      },
-      {
-        :name => "Columbus Crew",
-        :url => "http://www.mlssoccer.com/players/columbus-crew"
-      },
-      {
-        :name => "D.C. United",
-        :url => "http://www.mlssoccer.com/players/dc-united"
-      },
-      {
-        :name => "FC Dallas",
-        :url => "http://www.mlssoccer.com/players/fc-dallas"
-      },
-      {
-        :name => "Houston Dynamo",
-        :url => "http://www.mlssoccer.com/players/houston-dynamo"
-      },
-      {
-        :name => "Sporting Kansas City",
-        :url => "http://www.mlssoccer.com/players/sporting-kansas-city"
-      },
-      {
-        :name => "Los Angeles Galaxy",
-        :url => "http://www.mlssoccer.com/players/los-angeles-galaxy"
-      },
-      {
-        :name => "New England Revolution",
-        :url => "http://www.mlssoccer.com/players/new-england-revolution"
-      },
-      {
-        :name => "New York Red Bulls",
-        :url => "http://www.mlssoccer.com/players/new-york-red-bulls"
-      },
-      {
-        :name => "Portland Timbers",
-        :url => "http://www.mlssoccer.com/players/portland-timbers"
-      },
-      {
-        :name => "Philadelphia Union",
-        :url => "http://www.mlssoccer.com/players/philadelphia-union"
-      },
-      {
-        :name => "Real Salt Lake",
-        :url => "http://www.mlssoccer.com/players/real-salt-lake"
-      },
-      {
-        :name => "San Jose Earthquakes",
-        :url => "http://www.mlssoccer.com/players/san-jose-earthquakes"
-      },
-      {
-        :name => "Seattle Sounders FC",
-        :url => "http://www.mlssoccer.com/players/seattle-sounders-fc"
-      },
-      {
-        :name => "Toronto FC",
-        :url => "http://www.mlssoccer.com/players/toronto-fc"
-      },
-      {
-        :name => "Vancouver Whitecaps FC",
-        :url => "http://www.mlssoccer.com/players/vancouver-whitecaps-fc"
-      }
+      { :name => "Chicago Fire",           :id => "16" },
+      { :name => "Chivas USA",             :id => "1"  },
+      { :name => "Colorado Rapids",        :id => "2"  },
+      { :name => "Columbus Crew",          :id => "15" },
+      { :name => "D.C. United",            :id => "14" },
+      { :name => "FC Dallas",              :id => "3"  },
+      { :name => "Houston Dynamo",         :id => "4"  },
+      { :name => "Los Angeles Galaxy",     :id => "8"  },
+      { :name => "New England Revolution", :id => "12" },
+      { :name => "New York Red Bulls",     :id => "11" },
+      { :name => "Philadelphia Union",     :id => "10" },
+      { :name => "Portland Timbers",       :id => "52" },
+      { :name => "Real Salt Lake",         :id => "7"  },
+      { :name => "San Jose Earthquakes",   :id => "6"  },
+      { :name => "Seattle Sounders FC",    :id => "5"  },
+      { :name => "Sporting Kansas City",   :id => "13" },
+      { :name => "Toronto FC",             :id => "9"  },
+      { :name => "Vancouver Whitecaps FC", :id => "21" }
     ]
     teams.each do |t|
       team = Team.new 
@@ -161,6 +107,7 @@ class League < ActiveRecord::Base
       team.gender = "male"
       team.name = t[:name]
       team.uri = t[:url]
+      team.uri = "http://www.mlssoccer.com/players?field_player_club_nid=#{t[:id]}"
       team.save
     end
   end
