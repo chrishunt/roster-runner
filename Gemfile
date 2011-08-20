@@ -25,6 +25,7 @@ group :development do
   gem 'heroku'
   gem 'nifty-generators'
   gem 'taps'
+  gem 'powder'
 end
 
 # Use unicorn as the web server
