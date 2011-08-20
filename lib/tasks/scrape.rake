@@ -11,6 +11,9 @@ namespace :scrape do
   desc "Scrape all teams and players for NCAA FB league"
   task :ncaa_fb => [:environment, 'teams:ncaa_fb', 'players:ncaa_fb']
 
+  desc "Scrape all teams and players for NFL league"
+  task :nfl => [:environment, 'teams:nfl', 'players:nfl']
+
   namespace :teams do
     desc "Scrape all teams for every sport"
     task :all => :environment do
@@ -31,6 +34,8 @@ namespace :scrape do
     task :mlb => :environment do scrape_league_teams("MLB") end
     desc "Scrape all teams for NCAA FB league"
     task :ncaa_fb => :environment do scrape_league_teams("NCAA_FB") end
+    desc "Scrape all teams for NFL league"
+    task :nfl => :environment do scrape_league_teams("NFL") end
   end
 
   namespace :players do
@@ -53,6 +58,8 @@ namespace :scrape do
     task :mlb => :environment do scrape_league_players("MLB") end
     desc "Scrape all players for NCAA FB league"
     task :ncaa_fb => :environment do scrape_league_players("NCAA FB") end
+    desc "Scrape all players for NFL league"
+    task :nfl => :environment do scrape_league_players("NFL") end
   end
 end
 
