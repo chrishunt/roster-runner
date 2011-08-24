@@ -1,5 +1,7 @@
 Roster Runner
 -------------
+![Roster Runner](https://github.com/huntca/roster-runner/raw/master/screens/index.png)
+
 [rosterrunner.com](http://rosterrunner.com)
 
 Are you a sports photographer? Roster Runner is here to help with your captions.
