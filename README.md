@@ -1,6 +1,6 @@
 Roster Runner
 -------------
-![Roster Runner](https://github.com/huntca/roster-runner/raw/master/screens/index.png)
+![Roster Runner](https://github.com/chrishunt/roster-runner/raw/master/screens/index.png)
 
 [rosterrunner.com](http://rosterrunner.com)
 
